@@ -1,25 +1,71 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8sy6aajm7w64"]
+[gd_scene load_steps=8 format=3 uid="uid://c8sy6aajm7w64"]
 
+[ext_resource type="Script" path="res://game.gd" id="1_7eqvp"]
 [ext_resource type="PackedScene" uid="uid://uq3t3sj7y2ik" path="res://frog.tscn" id="1_iqpsr"]
+[ext_resource type="PackedScene" uid="uid://3noy6u4d4ct7" path="res://pause_menu.tscn" id="3_vetdy"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i8l8u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3y8qn"]
-size = Vector2(1.00261, 1.03774)
+size = Vector2(1.00174, 1.03774)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pepij"]
+size = Vector2(1152, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ta6hh"]
+size = Vector2(56.0005, 657)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_7eqvp")
 
 [node name="Frog" parent="." instance=ExtResource("1_iqpsr")]
 position = Vector2(240, 430)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(576, 623.75)
+position = Vector2(576, 624)
 scale = Vector2(1150, 62.5)
 texture = SubResource("PlaceholderTexture2D_i8l8u")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-position = Vector2(-0.000434756, 0.00943565)
+position = Vector2(2.98023e-07, 0.00943565)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_3y8qn")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Sprite2D"]
+position = Vector2(-0.50087, -9.984)
+scale = Vector2(0.000869565, 0.016)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D2"]
+position = Vector2(576, 26.5)
+shape = SubResource("RectangleShape2D_pepij")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Sprite2D"]
+position = Vector2(-0.50087, -9.984)
+scale = Vector2(0.000869565, 0.016)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D3"]
+position = Vector2(-27.9998, 328.5)
+shape = SubResource("RectangleShape2D_ta6hh")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Sprite2D"]
+position = Vector2(-0.50087, -9.984)
+scale = Vector2(0.000869565, 0.016)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D4"]
+position = Vector2(1182, 330)
+shape = SubResource("RectangleShape2D_ta6hh")
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_vetdy")]
+visible = false
+custom_minimum_size = Vector2(1156, 650)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1156.0
+offset_bottom = 650.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3

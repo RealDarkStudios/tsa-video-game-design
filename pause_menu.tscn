@@ -1,22 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv4uixy6rdcxr"]
+[gd_scene load_steps=3 format=3 uid="uid://3noy6u4d4ct7"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_8xr6i"]
-[ext_resource type="FontFile" uid="uid://c1nrun1x2egx8" path="res://fonts/SuperFrog_by_AllSuperFont.ttf" id="2_8i8o1"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_5yats"]
+[ext_resource type="FontFile" uid="uid://c1nrun1x2egx8" path="res://fonts/SuperFrog_by_AllSuperFont.ttf" id="2_q0bv6"]
 
-[node name="MainMenu" type="Control"]
+[node name="PauseMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8xr6i")
+script = ExtResource("1_5yats")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -30,33 +36,37 @@ layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Continue" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_8i8o1")
+theme_override_fonts/font = ExtResource("2_q0bv6")
 theme_override_font_sizes/font_size = 40
-text = "Play"
+text = "Continue"
 
 [node name="Settings" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_8i8o1")
+theme_override_fonts/font = ExtResource("2_q0bv6")
 theme_override_font_sizes/font_size = 40
 text = "Settings"
 
-[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_8i8o1")
+theme_override_fonts/font = ExtResource("2_q0bv6")
 theme_override_font_sizes/font_size = 40
-text = "Exit"
+text = "Quit"
 
 [node name="FrogFlingContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(400, 200)
-layout_mode = 2
-offset_left = 323.0
-offset_right = 829.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -253.0
+offset_right = 253.0
 offset_bottom = 200.0
+grow_horizontal = 2
 rotation = 0.0872665
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -66,7 +76,7 @@ custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/normal_font = ExtResource("2_8i8o1")
+theme_override_fonts/normal_font = ExtResource("2_q0bv6")
 theme_override_font_sizes/normal_font_size = 100
 text = "Frog Fling
 "
@@ -74,6 +84,6 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
