@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://c8sy6aajm7w64"]
+[gd_scene load_steps=9 format=4 uid="uid://c8sy6aajm7w64"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_7eqvp"]
 [ext_resource type="PackedScene" uid="uid://uq3t3sj7y2ik" path="res://frog.tscn" id="1_iqpsr"]
 [ext_resource type="PackedScene" uid="uid://3noy6u4d4ct7" path="res://pause_menu.tscn" id="3_vetdy"]
 [ext_resource type="Texture2D" uid="uid://dbb5p3ggmk00r" path="res://temp_assets/Assets.png" id="4_aadh4"]
+[ext_resource type="Script" path="res://scripts/player_manager.gd" id="4_is3rb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_68o2j"]
 texture = ExtResource("4_aadh4")
@@ -255,7 +256,21 @@ grow_vertical = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Environment" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Environment"]
+position = Vector2(-1.00049, -2)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAABAAkAAAADAAAAAAACAAkAAAADAAAAAAAEAAkAAAADAAAAAAADAAkAAAADAAAAAAAFAAkAAAADAAAAAAAGAAkAAAADAAAAAAAHAAkAAAADAAAAAAAIAAkAAAADAAAAAAAJAAkAAAADAAAAAAAKAAkAAAADAAAAAAALAAkAAAADAAAAAAALAAoAAAAEAAMAAAAMAAoAAAADAAQAAAANAAoAAAADAAQAAAAOAAoAAAACAAMAAAAPAAoAAAAEAAMAAAAQAAoAAAADAAQAAAARAAoAAAADAAEAAAACAAoAAAADAAQAAAAXAAoAAAAEAAMAAAAXAAkAAAADAAAAAAAWAAoAAAADAAEAAAAWAAkAAAADAAAAAAAVAAoAAAADAAMAAAAVAAkAAAADAAAAAAAUAAoAAAADAAEAAAAUAAkAAAADAAAAAAATAAoAAAADAAQAAAATAAkAAAADAAAAAAASAAoAAAAEAAMAAAASAAkAAAADAAAAAAARAAkAAAADAAAAAAAQAAkAAAADAAAAAAAPAAkAAAADAAAAAAAOAAkAAAADAAAAAAANAAkAAAADAAAAAAAMAAkAAAADAAAAAAAKAAoAAAADAAMAAAAJAAoAAAADAAMAAAAIAAoAAAADAAMAAAAHAAoAAAADAAQAAAAGAAoAAAADAAQAAAAFAAoAAAADAAQAAAAEAAoAAAADAAQAAAADAAoAAAADAAQAAAABAAoAAAAEAAMAAAAAAAoAAAACAAQAAAAAAAkAAAACAAAAAAAYAAoAAAAEAAQAAAAYAAkAAAAEAAAAAAA=")
+tile_set = SubResource("TileSet_wrsgo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_5uxat")
+
 [node name="Frogs" type="Node" parent="."]
+script = ExtResource("4_is3rb")
 
 [node name="Frog" parent="Frogs" instance=ExtResource("1_iqpsr")]
 position = Vector2(116, 307)
@@ -263,15 +278,11 @@ position = Vector2(116, 307)
 [node name="Frog2" parent="Frogs" instance=ExtResource("1_iqpsr")]
 position = Vector2(289, 309)
 
-[node name="Environment" type="Node" parent="."]
+[node name="Button" type="Button" parent="."]
+offset_left = 1015.0
+offset_top = 490.0
+offset_right = 1132.0
+offset_bottom = 549.0
+text = "Throw"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Environment"]
-position = Vector2(-1.00049, -2)
-scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAABAAkAAAADAAAAAAACAAkAAAADAAAAAAAEAAkAAAADAAAAAAADAAkAAAADAAAAAAAFAAkAAAADAAAAAAAGAAkAAAADAAAAAAAHAAkAAAADAAAAAAAIAAkAAAADAAAAAAAJAAkAAAADAAAAAAAKAAkAAAADAAAAAAALAAkAAAADAAAAAAALAAoAAAAEAAMAAAAMAAoAAAADAAQAAAANAAoAAAADAAQAAAAOAAoAAAACAAMAAAAPAAoAAAAEAAMAAAAQAAoAAAACAAMAAAARAAoAAAADAAIAAAACAAoAAAADAAQAAAAXAAoAAAAEAAMAAAAXAAkAAAADAAAAAAAWAAoAAAADAAEAAAAWAAkAAAADAAAAAAAVAAoAAAADAAMAAAAVAAkAAAADAAAAAAAUAAoAAAADAAIAAAAUAAkAAAADAAAAAAATAAoAAAACAAMAAAATAAkAAAADAAAAAAASAAoAAAAEAAMAAAASAAkAAAADAAAAAAARAAkAAAADAAAAAAAQAAkAAAADAAAAAAAPAAkAAAADAAAAAAAOAAkAAAADAAAAAAANAAkAAAADAAAAAAAMAAkAAAADAAAAAAAKAAoAAAADAAMAAAAJAAoAAAADAAMAAAAIAAoAAAADAAIAAAAHAAoAAAACAAMAAAAGAAoAAAAEAAMAAAAFAAoAAAADAAMAAAAEAAoAAAADAAIAAAADAAoAAAACAAMAAAABAAoAAAAEAAMAAAAAAAoAAAACAAQAAAAAAAkAAAACAAAAAAAYAAoAAAAEAAQAAAAYAAkAAAAEAAAAAAA=")
-tile_set = SubResource("TileSet_wrsgo")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Environment"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_5uxat")
+[connection signal="pressed" from="Button" to="Frogs" method="trigger_throw"]
