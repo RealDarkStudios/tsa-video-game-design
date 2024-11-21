@@ -1,7 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv4uixy6rdcxr"]
+[gd_scene load_steps=9 format=3 uid="uid://dv4uixy6rdcxr"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_8xr6i"]
-[ext_resource type="FontFile" uid="uid://c1nrun1x2egx8" path="res://fonts/SuperFrog_by_AllSuperFont.ttf" id="2_8i8o1"]
+[ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://base_theme.tres" id="2_x33iy"]
+[ext_resource type="Texture2D" uid="uid://duwvaiwr38iul" path="res://temp_assets/Background_2.png" id="3_ancxu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_juaxm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y6pl2"]
+texture = ExtResource("3_ancxu")
+modulate_color = Color(0.446777, 0.446777, 0.446777, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_k5x4s"]
+device = -1
+pressed = true
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_qnx8l"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_qejq8"]
+events = [SubResource("InputEventKey_k5x4s"), SubResource("InputEventKey_qnx8l")]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,68 +32,83 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8xr6i")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("CanvasItemMaterial_juaxm")
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_x33iy")
+theme_override_styles/panel = SubResource("StyleBoxTexture_y6pl2")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -400.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(300, 200)
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_8i8o1")
+theme = ExtResource("2_x33iy")
 theme_override_font_sizes/font_size = 40
+shortcut = SubResource("Shortcut_qejq8")
 text = "Play"
 
-[node name="Settings" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_8i8o1")
+theme = ExtResource("2_x33iy")
 theme_override_font_sizes/font_size = 40
 text = "Settings"
 
-[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_8i8o1")
+theme = ExtResource("2_x33iy")
 theme_override_font_sizes/font_size = 40
 text = "Exit"
 
-[node name="FrogFlingContainer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(400, 200)
-layout_mode = 2
-offset_left = 323.0
-offset_right = 829.0
-offset_bottom = 200.0
+[node name="FrogFlingContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 132.0
+grow_horizontal = 2
 rotation = 0.0872665
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="FrogFlingContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/FrogFlingContainer"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/normal_font = ExtResource("2_8i8o1")
-theme_override_font_sizes/normal_font_size = 100
+theme = ExtResource("2_x33iy")
+theme_override_font_sizes/normal_font_size = 150
 text = "Frog Fling
 "
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
