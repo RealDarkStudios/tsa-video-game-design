@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8sy6aajm7w64"]
+
+[ext_resource type="PackedScene" uid="uid://uq3t3sj7y2ik" path="res://frog.tscn" id="1_iqpsr"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i8l8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y8qn"]
+size = Vector2(1.00261, 1.03774)
+
+[node name="Game" type="Node2D"]
+
+[node name="Frog" parent="." instance=ExtResource("1_iqpsr")]
+position = Vector2(240, 430)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 623.75)
+scale = Vector2(1150, 62.5)
+texture = SubResource("PlaceholderTexture2D_i8l8u")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(-0.000434756, 0.00943565)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_3y8qn")
