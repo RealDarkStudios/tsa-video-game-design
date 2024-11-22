@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://c8sy6aajm7w64"]
+[gd_scene load_steps=12 format=4 uid="uid://c8sy6aajm7w64"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_7eqvp"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_7eqvp"]
 [ext_resource type="PackedScene" uid="uid://uq3t3sj7y2ik" path="res://frog.tscn" id="1_iqpsr"]
 [ext_resource type="PackedScene" uid="uid://3noy6u4d4ct7" path="res://pause_menu.tscn" id="3_vetdy"]
 [ext_resource type="Texture2D" uid="uid://dbb5p3ggmk00r" path="res://temp_assets/Assets.png" id="4_aadh4"]
 [ext_resource type="Script" path="res://scripts/player_manager.gd" id="4_is3rb"]
+[ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://base_theme.tres" id="6_mox8l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_68o2j"]
 texture = ExtResource("4_aadh4")
@@ -291,6 +292,7 @@ offset_left = 1015.0
 offset_top = 490.0
 offset_right = 1132.0
 offset_bottom = 549.0
+theme = ExtResource("6_mox8l")
 shortcut = SubResource("Shortcut_cg4hy")
 text = "Throw"
 
