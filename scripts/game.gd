@@ -5,5 +5,5 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_ESCAPE):
-		$PauseMenu.visible = true
+		$Camera2D/PauseMenu.visible = true
 		get_tree().paused = true

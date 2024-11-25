@@ -283,19 +283,26 @@ distance = -769.0
 script = ExtResource("1_7eqvp")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
-position = Vector2(564, 308)
+position = Vector2(1046, -327.5)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_cbdkv")
 priority = 100
 follow_mode = 3
 follow_targets = [NodePath("../Frogs/Frog"), NodePath("../Frogs/Frog2")]
+zoom = Vector2(0.4, 0.4)
 tween_resource = SubResource("Resource_nnrrt")
 tween_on_load = false
+follow_damping = true
+auto_zoom = true
+auto_zoom_min = 0.4
+auto_zoom_max = 0.9
+auto_zoom_margin = Vector4(100, 100, 100, 100)
 draw_limits = true
 limit_bottom = 650
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(564, 308)
+position = Vector2(1046, -327.5)
+zoom = Vector2(0.4, 0.4)
 limit_bottom = 650
 
 [node name="ThrowButton" type="Button" parent="Camera2D"]
@@ -312,14 +319,16 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("4_pr4v3")
 
-[node name="PauseMenu" parent="." instance=ExtResource("3_vetdy")]
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("3_vetdy")]
 visible = false
-custom_minimum_size = Vector2(1156, 650)
+custom_minimum_size = Vector2(854, 480)
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 1156.0
-offset_bottom = 650.0
+offset_left = -427.0
+offset_top = -240.0
+offset_right = 427.0
+offset_bottom = 240.0
 grow_horizontal = 1
 grow_vertical = 1
 size_flags_horizontal = 3
@@ -342,9 +351,12 @@ shape = SubResource("WorldBoundaryShape2D_5uxat")
 script = ExtResource("4_is3rb")
 
 [node name="Frog" parent="Frogs" instance=ExtResource("1_iqpsr")]
-position = Vector2(671, 307)
+position = Vector2(1324, -1072)
+gravity_scale = 0.5
 
 [node name="Frog2" parent="Frogs" instance=ExtResource("1_iqpsr")]
-position = Vector2(457, 309)
+modulate = Color(1, 0.27451, 0.211765, 1)
+position = Vector2(768, 417)
+mass = 1.1
 
 [connection signal="pressed" from="Camera2D/ThrowButton" to="Frogs" method="trigger_throw"]
