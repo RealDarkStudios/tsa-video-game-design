@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn2t7xk35nr4q"]
+
+[ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://base_theme.tres" id="1_e08x0"]
+[ext_resource type="Script" path="res://scripts/setup_menu.gd" id="1_jweqn"]
+[ext_resource type="Texture2D" uid="uid://duwvaiwr38iul" path="res://temp_assets/Background_2.png" id="2_3jtm1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gyqc8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hfv2b"]
+texture = ExtResource("2_3jtm1")
+modulate_color = Color(0.446777, 0.446777, 0.446777, 1)
+
+[node name="SetupMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jweqn")
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("CanvasItemMaterial_gyqc8")
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_e08x0")
+theme_override_styles/panel = SubResource("StyleBoxTexture_hfv2b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -120.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Start Game"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_start_pressed"]

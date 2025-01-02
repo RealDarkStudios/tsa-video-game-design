@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://uq3t3sj7y2ik" path="res://frog.tscn" id="1_iqpsr"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_cbdkv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_dbcv8"]
-[ext_resource type="PackedScene" uid="uid://3noy6u4d4ct7" path="res://pause_menu.tscn" id="3_vetdy"]
+[ext_resource type="PackedScene" uid="uid://3noy6u4d4ct7" path="res://ui_assests/pause_menu.tscn" id="3_vetdy"]
 [ext_resource type="Texture2D" uid="uid://dbb5p3ggmk00r" path="res://temp_assets/Assets.png" id="4_aadh4"]
 [ext_resource type="Script" path="res://scripts/player_manager.gd" id="4_is3rb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_pr4v3"]
@@ -262,26 +262,25 @@ normal = Vector2(1, 0)
 script = ExtResource("1_7eqvp")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
+top_level = true
 position = Vector2(564, 308)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_cbdkv")
 priority = 100
 follow_mode = 3
 follow_targets = [NodePath("../Frogs/Frog"), NodePath("../Frogs/Frog2")]
-zoom = Vector2(2.37603, 2.37603)
 tween_resource = SubResource("Resource_nnrrt")
 tween_on_load = false
 follow_damping = true
 auto_zoom = true
-auto_zoom_min = 0.01
-auto_zoom_max = 50.0
-auto_zoom_margin = Vector4(120, 120, 120, 120)
+auto_zoom_margin = Vector4(600, 300, 600, 300)
 draw_limits = true
 limit_bottom = 650
 
 [node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
 position = Vector2(564, 308)
-zoom = Vector2(2.37603, 2.37603)
+process_callback = 0
 limit_bottom = 650
 
 [node name="ThrowButton" type="Button" parent="Camera2D"]
