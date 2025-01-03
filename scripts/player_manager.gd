@@ -1,12 +1,13 @@
 extends Node
 
+var player_scene: PackedScene = preload("res://player.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	for player in GlobalData.player_data:
+		var player_node = player_scene.instantiate()
+		player_node.set_player_type(player.player_type)
+		add_child(player_node)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 

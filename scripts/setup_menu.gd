@@ -4,7 +4,7 @@ extends Control
 @export var player_card_add: Button
 @export var player_card_remove: Button
 
-var player_card = preload("res://ui_assests/player_card.tscn")
+const player_card = preload("res://ui_assests/player_card.tscn")
 
 func _ready() -> void:
 	add_player_card()
@@ -14,7 +14,11 @@ func _ready() -> void:
 	player_card_add.disabled = false
 
 func add_player_card() -> void:
-	var new_carditgogooodtplayer_card.instantiate();
+	var new_card = player_card.instantiate();
+	
+	new_card.player_name.text = \
+		"Player %d" % (player_card_holder.get_child_count() + 1)
+
 	player_card_holder.add_child(new_card)
 	
 	player_card_remove.disabled = false
@@ -39,4 +43,12 @@ func _on_remove_player_pressed() -> void:
 	remove_player_card()
 
 func _on_start_pressed() -> void:
+	var players = player_card_holder.get_children()
+
+	for player in players:
+		var data = PlayerData.new()
+		data.player_name = player.player_name.text
+		data.player_type = player.player_type
+		GlobalData.player_data.append(data)
+
 	get_tree().change_scene_to_file("res://game.tscn")
