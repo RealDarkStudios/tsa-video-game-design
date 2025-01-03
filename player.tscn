@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://uq3t3sj7y2ik"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_pmftf"]
+[ext_resource type="Texture2D" uid="uid://dgc386btcyff6" path="res://player_characters/sprites/snowman.png" id="2_dxoy2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ktyc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iwob6"]
+radius = 86.99
+
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("sprite", "collider")]
+physics_material_override = SubResource("PhysicsMaterial_5ktyc")
+center_of_mass_mode = 1
+continuous_cd = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_pmftf")
+sprite = NodePath("PlayerSprite")
+collider = NodePath("CollisionPolygon2D")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_dxoy2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(43, -22)
+polygon = PackedVector2Array(-63, 67, -82, 67, -84, 50, -85, 43, -84, 35, -86, 34, -88, 24, -79, 20, -87, -12, -85, -15, -81, -18, -71, -21, -61, -23, -49, -22, -44, -19, -42, -13, -40, 13, -39, 14, -32, 15, -30, 17, -29, 25, -33, 28, -30, 34, -28, 41, 1, 52, 1, 54, -32, 56, -30, 66, -51, 67)
+
+[node name="DragLine" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+
+[node name="ShotArc" type="Line2D" parent="."]
+width = 5.0
+default_color = Color(0.621524, 0.621524, 0.621524, 1)
+
+[node name="DragArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragArea"]
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CircleShape2D_iwob6")
+
+[connection signal="input_event" from="DragArea" to="." method="_on_drag_area_input_event"]
