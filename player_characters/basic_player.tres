@@ -8,3 +8,5 @@ script = ExtResource("1_5s70t")
 texture = ExtResource("2_exj5n")
 collider = PackedVector2Array(-88, -14, -85, -19, -80, -23, -7, -23, -2, -20, 2, -15, 2, 58, -1, 63, -8, 67, -78, 67, -84, 64, -88, 59)
 tint = Color(0, 0, 0, 1)
+jump_power = 7.0
+self_righting = 15.0

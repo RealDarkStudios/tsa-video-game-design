@@ -261,10 +261,12 @@ normal = Vector2(1, 0)
 script = ExtResource("1_7eqvp")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
+top_level = true
 position = Vector2(564, 308)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_cbdkv")
 priority = 100
+follow_mode = 3
 tween_resource = SubResource("Resource_nnrrt")
 tween_on_load = false
 follow_damping = true
@@ -317,8 +319,9 @@ tile_set = SubResource("TileSet_wrsgo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_5uxat")
 
-[node name="Players" type="Node2D" parent="."]
+[node name="Players" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
 position = Vector2(305, 364)
 script = ExtResource("4_is3rb")
+camera = NodePath("../PhantomCamera2D")
 
 [connection signal="pressed" from="Camera2D/ThrowButton" to="Players" method="trigger_throw"]
