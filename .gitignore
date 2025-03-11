@@ -8,3 +8,4 @@ export_presets.cfg
 
 # Misc
 .direnv/
+addons/phantom_camera/examples/
