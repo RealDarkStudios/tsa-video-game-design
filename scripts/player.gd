@@ -30,24 +30,6 @@ func _process(delta: float) -> void:
 		FrogState.active:
 			pass
 		FrogState.thrown:
-			# PID loop to make them go upright
-			var error = -self.transform.get_rotation()
-			
-			if abs(error) < 0.05:
-				intergral = 0
-				error = 0
-			
-			intergral = clamp(intergral + error * delta, -100, 100)
-			var derivative = (error - old_error) / delta
-			var torque = error * p + intergral * i + derivative * d
-			old_error = error
-			
-			#print(torque)
-
-			apply_torque(torque * 100)
-			
-			print(abs(self.linear_velocity.length() * 1000) + abs(self.angular_velocity) )
-			
 			if abs(self.linear_velocity.length() * 1000) + abs(self.angular_velocity) <= 1:
 				FrogCurrentState = FrogState.active
 		FrogState.dragging:
@@ -60,12 +42,12 @@ func _process(delta: float) -> void:
 
 				$DragLine.points[1] = distance
 				$ShotArc.clear_points()
-
+ 
 				var velocity = Vector2() - distance * jump_power
 				velocity = self.transform.basis_xform(velocity)
 
 				var point_pos = Vector2()
-				var last_point_pos = Vector2()
+				var last_point_pos = Vector2() 
 				var total_len = 0
 				
 				while total_len < 300:

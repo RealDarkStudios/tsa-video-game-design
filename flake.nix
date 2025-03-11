@@ -21,7 +21,7 @@
           buildInputs = with pkgs; [
             godot_4
           ];
-          LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+          # LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
         };
       }
     );
