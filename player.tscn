@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://uq3t3sj7y2ik"]
+[gd_scene load_steps=5 format=3 uid="uid://o0xubhtg0sgs"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_pmftf"]
 [ext_resource type="Texture2D" uid="uid://dgc386btcyff6" path="res://player_characters/sprites/snowman.png" id="2_dxoy2"]
