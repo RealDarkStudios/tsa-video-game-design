@@ -22,11 +22,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
     match FrogCurrentState:
+        FrogState.idle:
+            pass
         FrogState.active:
             pass
         FrogState.thrown:
             if abs(self.linear_velocity.length() * 1000) + abs(self.angular_velocity) <= 1:
-                FrogCurrentState = FrogState.active
+                FrogCurrentState = FrogState.idle
         FrogState.dragging:
             if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
                 var distance = get_local_mouse_position()

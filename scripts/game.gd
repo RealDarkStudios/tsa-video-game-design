@@ -30,9 +30,11 @@ func _on_next_button_pressed() -> void:
             if len(player_manager.players) <= target_player:
                 throw()
                 target_player = 0
+                return
             
+            player_manager.set_state(PlayerClass.FrogState.idle)
             var player = player_manager.players[target_player]
-
+            
             camera.follow_target = player
             player.FrogCurrentState = PlayerClass.FrogState.active
             target_player += 1

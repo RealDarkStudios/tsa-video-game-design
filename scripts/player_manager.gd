@@ -15,6 +15,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
     pass
+    
+func set_state(player_state):
+    for player in players:
+        player.FrogCurrentState = player_state
 
 func trigger_throw():
     for player in players:
