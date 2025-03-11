@@ -257,8 +257,10 @@ sources/0 = SubResource("TileSetAtlasSource_68o2j")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5uxat"]
 normal = Vector2(1, 0)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player_manager", "camera")]
 script = ExtResource("1_7eqvp")
+player_manager = NodePath("Players")
+camera = NodePath("PhantomCamera2D")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 top_level = true
@@ -280,14 +282,14 @@ position = Vector2(564, 308)
 scale = Vector2(1.5, 1.5)
 limit_bottom = 650
 
-[node name="ThrowButton" type="Button" parent="Camera2D"]
+[node name="NextButton" type="Button" parent="Camera2D"]
 offset_left = 418.5
 offset_top = 182.0
 offset_right = 535.5
 offset_bottom = 241.0
 theme = ExtResource("6_mox8l")
 shortcut = SubResource("Shortcut_cg4hy")
-text = "Throw"
+text = "Next"
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -319,9 +321,8 @@ tile_set = SubResource("TileSet_wrsgo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_5uxat")
 
-[node name="Players" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
+[node name="Players" type="Node2D" parent="."]
 position = Vector2(305, 364)
 script = ExtResource("4_is3rb")
-camera = NodePath("../PhantomCamera2D")
 
-[connection signal="pressed" from="Camera2D/ThrowButton" to="Players" method="trigger_throw"]
+[connection signal="pressed" from="Camera2D/NextButton" to="." method="_on_next_button_pressed"]
