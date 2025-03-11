@@ -3,6 +3,7 @@ extends RigidBody2D
 
 @export var sprite: Sprite2D
 @export var collider: CollisionPolygon2D
+@export var name_tag: Label
 
 var jump_power: float = 7
 

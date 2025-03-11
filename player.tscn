@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://uq3t3sj7y2ik"]
+[gd_scene load_steps=6 format=3 uid="uid://uq3t3sj7y2ik"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_pmftf"]
+[ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="2_cur66"]
 [ext_resource type="Texture2D" uid="uid://dgc386btcyff6" path="res://player_characters/sprites/snowman.png" id="2_dxoy2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ktyc"]
@@ -8,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_iwob6"]
 radius = 86.99
 
-[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("sprite", "collider")]
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("sprite", "collider", "name_tag")]
 physics_material_override = SubResource("PhysicsMaterial_5ktyc")
 center_of_mass_mode = 1
 lock_rotation = true
@@ -18,6 +19,26 @@ angular_damp_mode = 1
 script = ExtResource("1_pmftf")
 sprite = NodePath("PlayerSprite")
 collider = NodePath("CollisionPolygon2D")
+name_tag = NodePath("Title")
+
+[node name="Title" type="Label" parent="."]
+z_index = 100
+z_as_relative = false
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -70.0
+offset_right = 40.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme = ExtResource("2_cur66")
+text = "Player 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.35, 0.35)
