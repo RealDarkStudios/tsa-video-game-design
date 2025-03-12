@@ -3,19 +3,20 @@
 [ext_resource type="Script" path="res://scripts/player_card.gd" id="1_n7stq"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="1_ve0cn"]
 [ext_resource type="Script" path="res://scripts/player_type.gd" id="2_7nf8m"]
-[ext_resource type="Texture2D" uid="uid://p4ot40al8xad" path="res://icon.svg" id="2_dawwl"]
-[ext_resource type="Resource" uid="uid://bms1nge3tjrwu" path="res://player_characters/basic_player.tres" id="3_3301r"]
-[ext_resource type="Resource" uid="uid://dandj2dycc058" path="res://player_characters/snowman.tres" id="4_nyfs5"]
+[ext_resource type="Resource" uid="uid://bms1nge3tjrwu" path="res://player_characters/frog_simple.tres" id="3_3301r"]
+[ext_resource type="Resource" uid="uid://dandj2dycc058" path="res://player_characters/frog_complex.tres" id="4_nyfs5"]
+[ext_resource type="Texture2D" uid="uid://dt2opw31k1x7p" path="res://player_characters/sprites/frog_complex.png" id="6_4o1ew"]
 
-[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("sprite", "jump_bar", "player_name")]
+[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("sprite", "jump_bar", "speed_bar", "player_name")]
 script = ExtResource("1_n7stq")
 sprite = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/TypeSelector/HBoxContainer/TextureRect")
-jump_bar = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/HBoxContainer/ProgressBar")
+jump_bar = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/Jump/ProgressBar")
+speed_bar = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/Speed/ProgressBar")
 player_name = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/LineEdit")
 player_types = Array[ExtResource("2_7nf8m")]([ExtResource("3_3301r"), ExtResource("4_nyfs5")])
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(200, 250)
+custom_minimum_size = Vector2(200, 275)
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -60,11 +61,12 @@ theme_override_font_sizes/font_size = 20
 text = "<"
 
 [node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/TypeSelector/HBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_ve0cn")
-texture = ExtResource("2_dawwl")
+texture = ExtResource("6_4o1ew")
 expand_mode = 5
 stretch_mode = 5
 
@@ -80,18 +82,44 @@ layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = -15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="Jump" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/Jump"]
 layout_mode = 2
 theme = ExtResource("1_ve0cn")
 text = "Jump"
 fit_content = true
 autowrap_mode = 0
 
-[node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/Jump"]
+custom_minimum_size = Vector2(0, 13)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 3.0
+max_value = 10.0
+step = 0.1
+value = 3.0
+show_percentage = false
+
+[node name="Speed" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/Speed"]
+layout_mode = 2
+theme = ExtResource("1_ve0cn")
+text = "Speed
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/Speed"]
 custom_minimum_size = Vector2(0, 13)
 layout_mode = 2
 size_flags_horizontal = 3
