@@ -139,6 +139,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme = ExtResource("1_ve0cn")
 theme_override_font_sizes/font_size = 25
 text = "Player 1"
 alignment = 1

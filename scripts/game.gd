@@ -37,7 +37,7 @@ func process_state():
 			else:
 				next_button.text = "Confirm"
 
-			player_manager.set_state(PlayerClass.FrogState.idle)
+			player_manager.set_state(PlayerClass.FrogState.waiting_for_turn)
 			var player = player_manager.players[target_player]
 			
 			camera.follow_target = player
