@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjcbfsceqohp1"
-path="res://.godot/imported/Background1.png-58e424719c1907516b79e2933e8f3112.ctex"
+uid="uid://be1u5e2kywpvl"
+path="res://.godot/imported/SpikeTiles.png-a1f1472716ab17385a873a81e65c360a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Pixelart Grasslands/Pixelart Grasslands/BG2/Background1.png"
-dest_files=["res://.godot/imported/Background1.png-58e424719c1907516b79e2933e8f3112.ctex"]
+source_file="res://resources/Pixelart Grasslands/SpikeTiles.png"
+dest_files=["res://.godot/imported/SpikeTiles.png-a1f1472716ab17385a873a81e65c360a.ctex"]
 
 [params]
 

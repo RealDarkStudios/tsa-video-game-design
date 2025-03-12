@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgtxdq845wm4x"
-path="res://.godot/imported/Background3.png-986cfcfdf11c7af874945c31f32d937d.ctex"
+uid="uid://dpsgckaj8n5ca"
+path="res://.godot/imported/Background3.png-a24e7b80a3e43a7d062bc11d514c0941.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Pixelart Grasslands/Pixelart Grasslands/BG2/Background3.png"
-dest_files=["res://.godot/imported/Background3.png-986cfcfdf11c7af874945c31f32d937d.ctex"]
+source_file="res://resources/Pixelart Grasslands/BG2/Background3.png"
+dest_files=["res://.godot/imported/Background3.png-a24e7b80a3e43a7d062bc11d514c0941.ctex"]
 
 [params]
 
