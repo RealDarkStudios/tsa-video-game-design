@@ -6,6 +6,7 @@ extends RigidBody2D
 @export var name_tag: Label
 
 var jump_power: float = 7
+var pdata: PlayerData 
 
 enum FrogState {
     idle,
@@ -67,10 +68,16 @@ func _on_drag_area_input_event(viewport: Node, event: InputEvent, shape_idx: int
             $DragLine.visible = true
             FrogCurrentState = FrogState.dragging
 
-func set_player_type(player_type: PlayerType) -> void:
+func set_player_data(player_data: PlayerData) -> void:
+    var player_type = player_data.player_type
+    
+    pdata = player_data
+
     sprite.texture = player_type.texture
     collider.polygon = player_type.collider
     jump_power = player_type.jump_power
+    
+    name_tag.text = player_data.player_name
     
 func throw_frog():
     # Without xform the force is applied relative to the frog's rotation

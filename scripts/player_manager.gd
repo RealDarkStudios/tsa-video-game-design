@@ -8,8 +8,7 @@ var players: Array[Node2D]
 func _ready() -> void:
     for player in GlobalData.player_data:
         var player_node = player_scene.instantiate()
-        player_node.set_player_type(player.player_type)
-        player_node.name_tag.text = player.player_name
+        player_node.set_player_data(player)
 
         add_child(player_node)
         players.append(player_node)
