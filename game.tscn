@@ -330,6 +330,7 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("2_cbdkv")
 priority = 100
 follow_mode = 3
+snap_to_pixel = true
 tween_resource = SubResource("Resource_nnrrt")
 tween_on_load = false
 follow_damping = true
@@ -362,8 +363,9 @@ grow_vertical = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Players" type="Node2D" parent="."]
-position = Vector2(305, 364)
+[node name="Players" type="Node2D" parent="." node_paths=PackedStringArray("next_button")]
+position = Vector2(294, 523)
 script = ExtResource("4_is3rb")
+next_button = NodePath("../Container/NextButton")
 
 [connection signal="pressed" from="Container/NextButton" to="." method="_on_next_button_pressed"]

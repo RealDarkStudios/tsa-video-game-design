@@ -1,6 +1,7 @@
 class_name PlayerManager
 extends Node
 
+@export var next_button: Button
 
 var player_scene: PackedScene = preload("res://player.tscn")
 var players: Array[Node2D]
@@ -10,17 +11,27 @@ func _ready() -> void:
         var player_node = player_scene.instantiate()
         player_node.set_player_data(player)
         player_node.visible = false
-        player_node.global_position = Vector2(-1000, 500)
+        player_node.collider.disabled = true
         add_child(player_node)
         players.append(player_node)
 
 func _process(delta: float) -> void:
     pass
     
+func check_button():
+    # This is a really stupid way to do this
+    # Bwut i dwon't cawe UwU
+    for player in players:
+        if player.frog_state == PlayerClass.FrogState.thrown:
+            return
+
+    next_button.disabled = false
+    
 func set_state_all(player_state):
     for player in players:
-        player.FrogCurrentState = player_state
+        player.frog_state = player_state
 
 func trigger_throw():
+    next_button.disabled = true
     for player in players:
         player.throw_frog()

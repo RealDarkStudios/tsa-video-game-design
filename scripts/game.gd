@@ -41,8 +41,8 @@ func process_state():
             
             camera.follow_target = player
             player.visible = true
-            player.global_position = player_manager.global_position
-            player.FrogCurrentState = PlayerClass.FrogState.active
+            player.collider.disabled = false
+            player.frog_state = PlayerClass.FrogState.active
             state_label.text = player.pdata.player_name
             
             game_state = GameState.first_thrown
@@ -77,7 +77,7 @@ func process_state():
             var player = player_manager.players[target_player]
             
             camera.follow_target = player
-            player.FrogCurrentState = PlayerClass.FrogState.active
+            player.frog_state = PlayerClass.FrogState.active
             state_label.text = player.pdata.player_name
             target_player += 1
 
