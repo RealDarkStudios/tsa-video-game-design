@@ -10,8 +10,8 @@ var speed: float = 8
 var pdata: PlayerData 
 
 enum FrogState {
-    waiting_for_turn,
     idle,
+    waiting_for_turn,
     active,
     dragging,
     thrown

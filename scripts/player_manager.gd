@@ -9,14 +9,15 @@ func _ready() -> void:
     for player in GlobalData.player_data:
         var player_node = player_scene.instantiate()
         player_node.set_player_data(player)
-
+        player_node.visible = false
+        player_node.global_position = Vector2(-1000, 500)
         add_child(player_node)
         players.append(player_node)
 
 func _process(delta: float) -> void:
     pass
     
-func set_state(player_state):
+func set_state_all(player_state):
     for player in players:
         player.FrogCurrentState = player_state
 
