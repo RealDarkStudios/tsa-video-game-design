@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://uq3t3sj7y2ik"]
+[gd_scene load_steps=6 format=3 uid="uid://o0xubhtg0sgs"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_pmftf"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_pmftf"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="2_cur66"]
 [ext_resource type="Texture2D" uid="uid://dt2opw31k1x7p" path="res://player_characters/sprites/frog_complex.png" id="3_ad5t7"]
 
@@ -10,6 +10,8 @@
 radius = 86.99
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("sprite", "collider", "name_tag")]
+collision_layer = 2
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_5ktyc")
 center_of_mass_mode = 1
 lock_rotation = true

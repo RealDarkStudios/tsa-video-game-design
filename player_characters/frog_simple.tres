@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerType" load_steps=3 format=3 uid="uid://bms1nge3tjrwu"]
 
-[ext_resource type="Script" path="res://scripts/player_type.gd" id="1_1xxcg"]
+[ext_resource type="Script" path="res://scripts/player/player_type.gd" id="1_1xxcg"]
 [ext_resource type="Texture2D" uid="uid://cs6usue2rj3cs" path="res://player_characters/sprites/frog_simple.png" id="2_3vx0o"]
 
 [resource]

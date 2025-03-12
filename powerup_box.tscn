@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://xnlhj3hb36ae"]
+
+[ext_resource type="Script" path="res://scripts/powerup/powerup_box.gd" id="1_pwyc5"]
+[ext_resource type="Texture2D" uid="uid://dyycbbkplprg4" path="res://powerups/box.png" id="1_y67gu"]
+
+[node name="PowerupBox" type="Node2D"]
+script = ExtResource("1_pwyc5")
+
+[node name="BoxIcon" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_y67gu")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(16, -9, 16, 9, 0, 17, -16, 9, -16, -9, 0, -17)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

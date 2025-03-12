@@ -1,14 +1,19 @@
-[gd_scene load_steps=23 format=4 uid="uid://c8sy6aajm7w64"]
+[gd_scene load_steps=30 format=4 uid="uid://c8sy6aajm7w64"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7eqvp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_cbdkv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_dbcv8"]
 [ext_resource type="PackedScene" uid="uid://3noy6u4d4ct7" path="res://ui_assests/pause_menu.tscn" id="3_vetdy"]
-[ext_resource type="Script" path="res://scripts/player_manager.gd" id="4_is3rb"]
+[ext_resource type="Script" path="res://scripts/player/player_manager.gd" id="4_is3rb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_pr4v3"]
+[ext_resource type="PackedScene" uid="uid://xnlhj3hb36ae" path="res://powerup_box.tscn" id="5_peaqq"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="6_mox8l"]
 [ext_resource type="Texture2D" uid="uid://bxpvcijq447ha" path="res://resources/Pixelart Grasslands/DirtTiles.png" id="8_kuuas"]
+[ext_resource type="PackedScene" uid="uid://du4ewy3bh6v8b" path="res://ui_assests/select_player.tscn" id="8_tem8k"]
 [ext_resource type="Texture2D" uid="uid://ckt2ikbwsrwee" path="res://resources/Pixelart Grasslands/GrassTiles.png" id="9_ctsef"]
+[ext_resource type="Script" path="res://scripts/powerup/powerup_manager.gd" id="11_3vt1j"]
+[ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="12_so7cd"]
+[ext_resource type="Resource" uid="uid://df115tgnjt566" path="res://powerups/weak.tres" id="13_xqvva"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5uxat"]
 normal = Vector2(1, 0)
@@ -242,6 +247,7 @@ texture = ExtResource("9_ctsef")
 
 [sub_resource type="TileSet" id="TileSet_5jg7q"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
@@ -262,18 +268,29 @@ unicode = 32
 [sub_resource type="Shortcut" id="Shortcut_cg4hy"]
 events = [SubResource("InputEventKey_2q1w7")]
 
+[sub_resource type="InputEventKey" id="InputEventKey_8ho4b"]
+device = -1
+keycode = 70
+unicode = 102
+
+[sub_resource type="Shortcut" id="Shortcut_3csty"]
+events = [SubResource("InputEventKey_8ho4b")]
+
 [sub_resource type="Resource" id="Resource_nnrrt"]
 script = ExtResource("3_dbcv8")
 duration = 1.0
 transition = 0
 ease = 2
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("player_manager", "camera", "state_label", "next_button")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player_manager", "powerup_manager", "state_label", "next_button", "powerup_button", "select_player_menu", "camera")]
 script = ExtResource("1_7eqvp")
 player_manager = NodePath("Players")
-camera = NodePath("PhantomCamera2D")
+powerup_manager = NodePath("Powerups")
 state_label = NodePath("Container/StateLabel")
 next_button = NodePath("Container/NextButton")
+powerup_button = NodePath("Container/PowerupButton")
+select_player_menu = NodePath("Container/SelectPlayer")
+camera = NodePath("PhantomCamera2D")
 
 [node name="Environment" type="Node" parent="."]
 
@@ -323,6 +340,32 @@ theme_override_font_sizes/font_size = 30
 text = "Player 1"
 vertical_alignment = 1
 
+[node name="PowerupButton" type="TextureButton" parent="Container"]
+texture_filter = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = -40.0
+grow_vertical = 0
+disabled = true
+action_mode = 0
+shortcut = SubResource("Shortcut_3csty")
+stretch_mode = 0
+
+[node name="SelectPlayer" parent="Container" instance=ExtResource("8_tem8k")]
+visible = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PauseMenu" parent="Container" instance=ExtResource("3_vetdy")]
+visible = false
+custom_minimum_size = Vector2(1156, 650)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 top_level = true
 position = Vector2(564, 308)
@@ -350,22 +393,17 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("4_pr4v3")
 
-[node name="PauseMenu" parent="." instance=ExtResource("3_vetdy")]
-visible = false
-custom_minimum_size = Vector2(1156, 650)
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 1156.0
-offset_bottom = 650.0
-grow_horizontal = 1
-grow_vertical = 1
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="Players" type="Node2D" parent="." node_paths=PackedStringArray("next_button")]
-position = Vector2(294, 523)
+position = Vector2(305, 364)
 script = ExtResource("4_is3rb")
 next_button = NodePath("../Container/NextButton")
 
+[node name="Powerups" type="Node2D" parent="."]
+script = ExtResource("11_3vt1j")
+powerup_types = Array[ExtResource("12_so7cd")]([ExtResource("13_xqvva")])
+
+[node name="PowerupBox" parent="." instance=ExtResource("5_peaqq")]
+position = Vector2(438, 556)
+
 [connection signal="pressed" from="Container/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Container/PowerupButton" to="." method="_on_powerup_button_pressed"]
