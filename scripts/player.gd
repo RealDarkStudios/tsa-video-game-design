@@ -6,6 +6,7 @@ extends RigidBody2D
 @export var name_tag: Label
 
 var jump_power: float = 7
+var speed: float = 8
 var pdata: PlayerData 
 
 enum FrogState {
@@ -76,6 +77,7 @@ func set_player_data(player_data: PlayerData) -> void:
     sprite.texture = player_type.texture
     collider.polygon = player_type.collider
     jump_power = player_type.jump_power
+    speed = player_type.speed
     
     name_tag.text = player_data.player_name
     
@@ -86,7 +88,9 @@ func throw_frog():
 
     freeze = false
     $DragLine.points[1] = Vector2()
-    FrogCurrentState = FrogState.thrown
-    apply_impulse(velocity)
+    FrogCurrentState = FrogState.thrown 
     $DragLine.visible = false
     $ShotArc.clear_points()
+    await get_tree().create_timer((10 - speed) / 10).timeout
+    
+    apply_impulse(velocity)
