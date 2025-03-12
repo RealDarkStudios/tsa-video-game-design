@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://c8sy6aajm7w64"]
+[gd_scene load_steps=26 format=4 uid="uid://c8sy6aajm7w64"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7eqvp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_cbdkv"]
@@ -9,6 +9,8 @@
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="6_mox8l"]
 [ext_resource type="Texture2D" uid="uid://bxpvcijq447ha" path="res://resources/Pixelart Grasslands/DirtTiles.png" id="8_kuuas"]
 [ext_resource type="Texture2D" uid="uid://ckt2ikbwsrwee" path="res://resources/Pixelart Grasslands/GrassTiles.png" id="9_ctsef"]
+[ext_resource type="Shader" path="res://resources/shaders/checker.gdshader" id="10_qfmro"]
+[ext_resource type="Texture2D" uid="uid://p4ot40al8xad" path="res://icon.svg" id="11_aa0fs"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5uxat"]
 normal = Vector2(1, 0)
@@ -268,6 +270,13 @@ duration = 1.0
 transition = 0
 ease = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_polgw"]
+shader = ExtResource("10_qfmro")
+shader_parameter/grid_size = Vector2(3, 10)
+shader_parameter/color1 = Color(1, 1, 1, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/aspect_ratio_vector = Vector2(1, 1.1)
+
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player_manager", "camera", "state_label", "next_button")]
 script = ExtResource("1_7eqvp")
 player_manager = NodePath("Players")
@@ -367,5 +376,11 @@ size_flags_vertical = 3
 position = Vector2(294, 523)
 script = ExtResource("4_is3rb")
 next_button = NodePath("../Container/NextButton")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_polgw")
+position = Vector2(4308, 291)
+scale = Vector2(0.65625, 4.54688)
+texture = ExtResource("11_aa0fs")
 
 [connection signal="pressed" from="Container/NextButton" to="." method="_on_next_button_pressed"]
