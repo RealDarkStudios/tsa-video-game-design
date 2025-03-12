@@ -6,6 +6,8 @@ extends Control
 
 const player_card = preload("res://ui_assests/player_card.tscn")
 
+const colors = [Color8(229,99, 0, 255), Color8(14, 205, 230, 255), Color8(169, 14, 230, 255), Color8(166, 230, 14, 255)]
+
 func _ready() -> void:
     add_player_card()
     add_player_card()
@@ -18,6 +20,8 @@ func add_player_card() -> void:
     
     new_card.player_name.text = \
         "Player %d" % (player_card_holder.get_child_count() + 1)
+        
+    new_card.player_name.modulate = colors[player_card_holder.get_child_count()]
 
     player_card_holder.add_child(new_card)
     

@@ -24,6 +24,7 @@ name_tag = NodePath("Title")
 [node name="Title" type="Label" parent="."]
 z_index = 100
 z_as_relative = false
+texture_filter = 6
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5

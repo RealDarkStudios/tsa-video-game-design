@@ -82,6 +82,7 @@ func set_player_data(player_data: PlayerData) -> void:
     speed = player_type.speed
     
     name_tag.text = player_data.player_name
+    name_tag.modulate = player_data.color
     
 func throw_frog():
     # Without xform the force is applied relative to the frog's rotation
