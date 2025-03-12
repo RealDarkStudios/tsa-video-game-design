@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://3noy6u4d4ct7" path="res://ui_assests/pause_menu.tscn" id="3_vetdy"]
 [ext_resource type="Script" path="res://scripts/player/player_manager.gd" id="4_is3rb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_pr4v3"]
-[ext_resource type="PackedScene" path="res://powerup_box.tscn" id="5_peaqq"]
+[ext_resource type="PackedScene" uid="uid://xnlhj3hb36ae" path="res://powerup_box.tscn" id="5_peaqq"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="6_mox8l"]
 [ext_resource type="Texture2D" uid="uid://bxpvcijq447ha" path="res://resources/Pixelart Grasslands/DirtTiles.png" id="8_kuuas"]
-[ext_resource type="PackedScene" path="res://ui_assests/select_player.tscn" id="8_tem8k"]
+[ext_resource type="PackedScene" uid="uid://du4ewy3bh6v8b" path="res://ui_assests/select_player.tscn" id="8_tem8k"]
 [ext_resource type="Texture2D" uid="uid://ckt2ikbwsrwee" path="res://resources/Pixelart Grasslands/GrassTiles.png" id="9_ctsef"]
 [ext_resource type="Shader" path="res://resources/shaders/checker.gdshader" id="10_qfmro"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup_manager.gd" id="11_3vt1j"]
@@ -286,9 +286,9 @@ ease = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_polgw"]
 shader = ExtResource("10_qfmro")
-shader_parameter/grid_size = Vector2(3, 10)
-shader_parameter/color1 = Color(1, 1, 1, 1)
-shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/grid_size = Vector2(3, 100)
+shader_parameter/color1 = Color(1, 1, 1, 0.501961)
+shader_parameter/color2 = Color(0, 0, 0, 0.501961)
 shader_parameter/aspect_ratio_vector = Vector2(1, 1.1)
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player_manager", "powerup_manager", "state_label", "next_button", "powerup_button", "select_player_menu", "camera")]
@@ -408,9 +408,10 @@ script = ExtResource("4_is3rb")
 next_button = NodePath("../Container/NextButton")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
 material = SubResource("ShaderMaterial_polgw")
-position = Vector2(4308, 291)
-scale = Vector2(0.65625, 4.54688)
+position = Vector2(4300, -320)
+scale = Vector2(0.5, 14.023)
 texture = ExtResource("11_aa0fs")
 
 [node name="Powerups" type="Node2D" parent="."]
