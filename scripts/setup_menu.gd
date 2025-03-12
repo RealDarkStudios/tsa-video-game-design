@@ -8,7 +8,7 @@ const player_card = preload("res://ui_assests/player_card.tscn")
 
 const colors = [Color8(229,99, 0, 255), Color8(14, 205, 230, 255), Color8(169, 14, 230, 255), Color8(166, 230, 14, 255)]
 
-func _ready() -> void:
+func _ready() -> void:    
     add_player_card()
     add_player_card()
     
@@ -47,12 +47,15 @@ func _on_remove_player_pressed() -> void:
     remove_player_card()
 
 func _on_start_pressed() -> void:
+    GlobalData.player_data.clear()
     var players = player_card_holder.get_children()
 
     for player in players:
         var data = PlayerData.new()
         data.player_name = player.player_name.text
         data.player_type = player.player_type
+        data.color = colors[player.get_index()]
         GlobalData.player_data.append(data)
+        player.queue_free()
 
     get_tree().change_scene_to_file("res://game.tscn")
