@@ -68,6 +68,7 @@ func process_state():
         
             next_button.text = "Confirm"
             
+            player_manager.set_state_all(PlayerClass.FrogState.waiting_for_turn)
             var player = player_manager.players[target_player]
             
             camera.follow_target = player
@@ -75,6 +76,7 @@ func process_state():
             player.collider.disabled = false
             player.frog_state = PlayerClass.FrogState.active
             state_label.text = player.pdata.player_name
+            state_label.modulate = player.pdata.color
             
             game_state = GameState.first_thrown
 
@@ -110,6 +112,7 @@ func process_state():
             camera.follow_target = player
             player.frog_state = PlayerClass.FrogState.active
             state_label.text = player.pdata.player_name
+            state_label.modulate = player.pdata.color
             
             if player.pdata.powerup:
                 powerup_button.disabled = false
