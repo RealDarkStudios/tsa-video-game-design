@@ -95,6 +95,8 @@ func set_player_data(player_data: PlayerData) -> void:
     
     name_tag.text = player_data.player_name
     name_tag.modulate = player_data.color
+    $DragLine.modulate = player_data.color
+    $ShotArc.modulate = player_data.color
     
 func throw_frog():
     # Without xform the force is applied relative to the frog's rotation
@@ -109,3 +111,6 @@ func throw_frog():
     await get_tree().create_timer((10 - speed) / 10).timeout
     frog_state = FrogState.thrown
     apply_impulse(velocity)
+    
+func pickup_powerup(powerup: Powerup):
+    pdata.powerup = powerup

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://b52slvah1mntw"]
 
-[ext_resource type="Script" path="res://scripts/player_card.gd" id="1_n7stq"]
+[ext_resource type="Script" path="res://scripts/player/player_card.gd" id="1_n7stq"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="1_ve0cn"]
-[ext_resource type="Script" path="res://scripts/player_type.gd" id="2_7nf8m"]
+[ext_resource type="Script" path="res://scripts/player/player_type.gd" id="2_7nf8m"]
 [ext_resource type="Resource" uid="uid://bms1nge3tjrwu" path="res://player_characters/frog_simple.tres" id="3_3301r"]
 [ext_resource type="Resource" uid="uid://dandj2dycc058" path="res://player_characters/frog_complex.tres" id="4_nyfs5"]
 [ext_resource type="Texture2D" uid="uid://dt2opw31k1x7p" path="res://player_characters/sprites/frog_complex.png" id="6_4o1ew"]
