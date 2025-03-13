@@ -11,5 +11,5 @@ func load_player_type(new_player_type: PlayerType) -> void:
     player_type = new_player_type
     sprite.texture = new_player_type.texture
 
-func _on_panel_gui_input(event: InputEvent) -> void:
+func _on_panel_gui_input(_event: InputEvent) -> void:
     callback.call()

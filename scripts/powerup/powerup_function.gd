@@ -1,7 +1,7 @@
 class_name PowerupScript
 
-func use(data: PowerupData):
+func use(_data: PowerupData):
     pass
     
-func reset(data: PowerupData):
+func reset(_data: PowerupData):
     pass

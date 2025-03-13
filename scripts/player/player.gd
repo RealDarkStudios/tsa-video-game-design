@@ -76,7 +76,7 @@ func _process(delta: float) -> void:
                 frog_state = FrogState.active
     
 
-func _on_drag_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_drag_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
     if frog_state == FrogState.active:
         if event is InputEventMouseButton && event.is_pressed():
             # I really should make a update state function that handles this stuff

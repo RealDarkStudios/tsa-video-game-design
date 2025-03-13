@@ -15,7 +15,7 @@ func _ready() -> void:
         add_child(player_node)
         players.append(player_node)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     pass
     
 func check_button():

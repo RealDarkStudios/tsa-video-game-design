@@ -9,8 +9,8 @@ var players: Array[Node2D]
 
 const card = preload("res://ui_assests/select_card.tscn")
 
-func show_players(players: Array[Node2D]):
-    players = players
+func show_players(new_players: Array[Node2D]):
+    players = new_players
     
     for player in players:
         playercardholder.add_child(_add_player_card(player))
@@ -35,8 +35,8 @@ func _select_card(idx: int):
              continue
         card.panel.self_modulate = players[i].pdata.color.darkened(0.5)
     
-    var card = playercardholder.get_child(idx)
-    card.panel.self_modulate = players[idx].pdata.color
+    var new_card = playercardholder.get_child(idx)
+    new_card.panel.self_modulate = players[idx].pdata.color
     
     
 func _on_confirm_pressed() -> void:

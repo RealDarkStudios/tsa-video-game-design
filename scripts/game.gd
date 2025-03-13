@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameManager
 
 enum GameState {
     first_throw,
@@ -23,6 +24,7 @@ enum GameState {
 
 var target_player: int = 0
 var game_state: GameState = GameState.first_throw
+var current_level: Node2D
 
 func _ready() -> void:
     camera.follow_targets.clear()
@@ -30,7 +32,7 @@ func _ready() -> void:
     GlobalData.powerups = powerup_manager.powerup_types
     _on_next_button_pressed()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     if Input.is_key_pressed(KEY_ESCAPE):
         $Container/PauseMenu.visible = true
         get_tree().paused = true
@@ -58,7 +60,9 @@ func _on_powerup_button_pressed() -> void:
     player.pdata.powerup = null
     powerup_button.disabled = true
     powerup_button.texture_normal = null
-    
+
+func on_finish(player: PlayerClass):
+    player.visible = false
 
 func process_state():
     match game_state:
@@ -88,6 +92,7 @@ func process_state():
             var tmp_speed = player.speed
             player.speed = 10
             
+            player_manager.set_state_all(PlayerClass.FrogState.idle)
             player.throw_frog()
             
             player.speed = tmp_speed

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c8sy6aajm7w64"]
+[gd_scene load_steps=19 format=3 uid="uid://c8sy6aajm7w64"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7eqvp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_cbdkv"]
@@ -10,9 +10,7 @@
 [ext_resource type="PackedScene" path="res://powerup_box.tscn" id="5_peaqq"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="6_mox8l"]
 [ext_resource type="PackedScene" path="res://ui_assests/select_player.tscn" id="8_tem8k"]
-[ext_resource type="Shader" path="res://resources/shaders/checker.gdshader" id="10_qfmro"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup_manager.gd" id="11_3vt1j"]
-[ext_resource type="Texture2D" uid="uid://p4ot40al8xad" path="res://icon.svg" id="11_aa0fs"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="12_so7cd"]
 [ext_resource type="Resource" uid="uid://df115tgnjt566" path="res://powerups/weak.tres" id="13_xqvva"]
 
@@ -38,13 +36,6 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_polgw"]
-shader = ExtResource("10_qfmro")
-shader_parameter/grid_size = Vector2(3, 100)
-shader_parameter/color1 = Color(1, 1, 1, 0.501961)
-shader_parameter/color2 = Color(0, 0, 0, 0.501961)
-shader_parameter/aspect_ratio_vector = Vector2(1, 1.1)
-
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player_manager", "powerup_manager", "level_manager", "state_label", "next_button", "powerup_button", "select_player_menu", "camera")]
 script = ExtResource("1_7eqvp")
 player_manager = NodePath("Players")
@@ -56,8 +47,9 @@ powerup_button = NodePath("Container/PowerupButton")
 select_player_menu = NodePath("Container/SelectPlayer")
 camera = NodePath("PhantomCamera2D")
 
-[node name="LevelManager" type="Node" parent="."]
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("game_manager")]
 script = ExtResource("4_nffec")
+game_manager = NodePath("..")
 
 [node name="Container" type="CanvasLayer" parent="."]
 
@@ -148,13 +140,6 @@ script = ExtResource("4_pr4v3")
 position = Vector2(305, 364)
 script = ExtResource("4_is3rb")
 next_button = NodePath("../Container/NextButton")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_polgw")
-position = Vector2(4300, -320)
-scale = Vector2(0.5, 14.023)
-texture = ExtResource("11_aa0fs")
 
 [node name="Powerups" type="Node2D" parent="."]
 script = ExtResource("11_3vt1j")
