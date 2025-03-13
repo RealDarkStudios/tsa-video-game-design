@@ -10,14 +10,12 @@ enum GameState {
 
 @export_category("Managers")
 @export var player_manager: PlayerManager
-@export var powerup_manager: PowerupManager
 @export var level_manager: LevelManager
 
 @export_category("UI")
 @export var state_label: Label
 @export var next_button: Button
 @export var powerup_button: TextureButton
-@export var select_player_menu: SelectPlayerMenu
 @export var finish_menu: FinishMenu
 
 @export_category("Misc")
@@ -30,7 +28,6 @@ var current_level: Node2D
 func _ready() -> void:
     camera.follow_targets.clear()
     camera.follow_mode = PhantomCamera2D.FollowMode.SIMPLE
-    GlobalData.powerups = powerup_manager.powerup_types
     _on_next_button_pressed()
 
 func _process(_delta: float) -> void:
@@ -43,24 +40,22 @@ func _on_next_button_pressed() -> void:
 
 func _on_powerup_button_pressed() -> void: 
     var player: PlayerClass = player_manager.players[target_player - 1]
-    if not player.pdata.powerup:
+    var powerup = player.pdata.powerup
+
+    if not powerup:
         return
     
-    var powerdata = PowerupData.new()
-    
-    if player.pdata.powerup.affectsOther:
-        select_player_menu.show_players(player_manager.players.filter(func(plr): plr != player))
-        select_player_menu.made_selection = func(idx: int):
-            powerdata.affected_player = player_manager.players[idx]
-            select_player_menu.visible = false
-        select_player_menu.visible = true
+    if powerup.affectsOther:
+        for other_player in player_manager.players:
+            if other_player != player:
+                other_player.apply_powerup(powerup)
     else:
-        powerdata.affected_player = player_manager.players[target_player]
-        
-    powerup_manager.register_for_use(player, powerdata)
+        player.apply_powerup(player.pdata.powerup)
+
     player.pdata.powerup = null
     powerup_button.disabled = true
     powerup_button.texture_normal = null
+    powerup_button.get_parent().visible = false
 
 func on_finish(player: PlayerClass):
     player.finish()
@@ -147,9 +142,11 @@ func process_state():
             
             if player.pdata.powerup:
                 powerup_button.disabled = false
+                powerup_button.get_parent().visible = true
                 powerup_button.texture_normal = player.pdata.powerup.texture
             else:
                 powerup_button.disabled = true
+                powerup_button.get_parent().visible = false
                 powerup_button.texture_normal = null
             
             target_player += 1
@@ -166,8 +163,8 @@ func player_transition():
 
 func throw_transition():
     powerup_button.disabled = true
+    powerup_button.get_parent().visible = false
     powerup_button.texture_normal = null
-    powerup_manager.use_all()
     
     game_state = GameState.thrown
     target_player = 0

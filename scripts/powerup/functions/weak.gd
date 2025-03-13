@@ -1,7 +1,8 @@
-extends PowerupScript
-
-func use(data: PowerupData):
-    data.affected_player.jump_power /= 2
+static func apply(player: PlayerClass):
+    player.jump_power -= 3
     
-func reset(data: PowerupData):
-    data.affected_player.jump_power *= 2
+static func throw(player: PlayerClass):
+    pass
+    
+static func reset(player: PlayerClass):
+    player.jump_power += 3

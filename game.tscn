@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8sy6aajm7w64"]
+[gd_scene load_steps=16 format=3 uid="uid://c8sy6aajm7w64"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7eqvp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_cbdkv"]
@@ -8,12 +8,7 @@
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="4_nffec"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_pr4v3"]
 [ext_resource type="PackedScene" uid="uid://bqvs6tbks18pv" path="res://ui_assests/finish_menu.tscn" id="5_g5kc4"]
-[ext_resource type="PackedScene" path="res://powerup_box.tscn" id="5_peaqq"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="6_mox8l"]
-[ext_resource type="PackedScene" uid="uid://6kri5a4youxd" path="res://ui_assests/select_player.tscn" id="8_tem8k"]
-[ext_resource type="Script" path="res://scripts/powerup/powerup_manager.gd" id="11_3vt1j"]
-[ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="12_so7cd"]
-[ext_resource type="Resource" uid="uid://df115tgnjt566" path="res://powerups/weak.tres" id="13_xqvva"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_2q1w7"]
 device = -1
@@ -22,6 +17,9 @@ unicode = 32
 
 [sub_resource type="Shortcut" id="Shortcut_cg4hy"]
 events = [SubResource("InputEventKey_2q1w7")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqj88"]
+bg_color = Color(0.43, 0.277207, 0.2064, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_8ho4b"]
 device = -1
@@ -37,24 +35,17 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("player_manager", "powerup_manager", "level_manager", "state_label", "next_button", "powerup_button", "select_player_menu", "finish_menu", "camera")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player_manager", "level_manager", "state_label", "next_button", "powerup_button", "finish_menu", "camera")]
 script = ExtResource("1_7eqvp")
 player_manager = NodePath("Players")
-powerup_manager = NodePath("Powerups")
 level_manager = NodePath("LevelManager")
 state_label = NodePath("Container/StateLabel")
 next_button = NodePath("Container/NextButton")
-powerup_button = NodePath("Container/PowerupButton")
-select_player_menu = NodePath("Container/SelectPlayer")
+powerup_button = NodePath("Container/Powerup/PowerupButton")
 finish_menu = NodePath("Container/FinishMenu")
 camera = NodePath("PhantomCamera2D")
 
 [node name="Container" type="CanvasLayer" parent="."]
-
-[node name="SelectPlayer" parent="Container" instance=ExtResource("8_tem8k")]
-visible = false
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="FinishMenu" parent="Container" node_paths=PackedStringArray("game_manager", "level_manager") instance=ExtResource("5_g5kc4")]
 visible = false
@@ -101,19 +92,33 @@ theme_override_font_sizes/font_size = 30
 text = "Player 1"
 vertical_alignment = 1
 
-[node name="PowerupButton" type="TextureButton" parent="Container"]
-texture_filter = 3
+[node name="Powerup" type="Panel" parent="Container"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -160.0
-offset_right = 160.0
-offset_bottom = -40.0
+offset_left = 100.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = -100.0
 grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wqj88")
+
+[node name="PowerupButton" type="TextureButton" parent="Container/Powerup"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 disabled = true
 action_mode = 0
 shortcut = SubResource("Shortcut_3csty")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("game_manager")]
@@ -148,17 +153,11 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("4_pr4v3")
 
-[node name="Players" type="Node2D" parent="." node_paths=PackedStringArray("next_button")]
+[node name="Players" type="Node2D" parent="." node_paths=PackedStringArray("next_button", "game_manager")]
 position = Vector2(305, 364)
 script = ExtResource("4_is3rb")
 next_button = NodePath("../Container/NextButton")
-
-[node name="Powerups" type="Node2D" parent="."]
-script = ExtResource("11_3vt1j")
-powerup_types = Array[ExtResource("12_so7cd")]([ExtResource("13_xqvva")])
-
-[node name="PowerupBox" parent="." instance=ExtResource("5_peaqq")]
-position = Vector2(438, 556)
+game_manager = NodePath("..")
 
 [connection signal="pressed" from="Container/NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="pressed" from="Container/PowerupButton" to="." method="_on_powerup_button_pressed"]
+[connection signal="pressed" from="Container/Powerup/PowerupButton" to="." method="_on_powerup_button_pressed"]

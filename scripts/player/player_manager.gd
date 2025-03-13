@@ -2,6 +2,7 @@ class_name PlayerManager
 extends Node
 
 @export var next_button: Button
+@export var game_manager: GameManager
 
 const player_scene: PackedScene = preload("res://player.tscn")
 var players: Array[Node2D]
@@ -27,6 +28,7 @@ func check_button():
     # Bwut i dwon't cawe UwU
     for player in players:
         if player.frog_state == PlayerClass.FrogState.thrown:
+            next_button.disabled = true
             return
 
     next_button.disabled = false

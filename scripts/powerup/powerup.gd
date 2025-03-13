@@ -6,9 +6,3 @@ extends Resource
 
 @export_category("Required Data")
 @export var affectsOther: bool
-
-func use(_data: PowerupData):    
-    pass
-    
-func reset(_data: PowerupData):  
-    pass

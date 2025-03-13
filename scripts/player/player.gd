@@ -8,7 +8,9 @@ extends RigidBody2D
 
 var jump_power: float = 7
 var speed: float = 8
-var pdata: PlayerData 
+var pdata: PlayerData
+
+var active_powerups: Array[Powerup]
 
 const power_scaler: float = 0.5
 const power_base: float = 3
@@ -41,6 +43,12 @@ func _process(delta: float) -> void:
             if self.linear_velocity.length() < 0.001:
                 if last_time:
                     frog_state = FrogState.idle
+                    
+                    for powerup in active_powerups:
+                        powerup.powerup_script.reset(self)
+
+                    active_powerups.clear()
+
                     get_parent().check_button()
                     last_time = false
                 else: last_time = true
@@ -98,8 +106,16 @@ func set_player_data(player_data: PlayerData) -> void:
     name_tag.modulate = player_data.color
     $DragLine.modulate = player_data.color
     $ShotArc.modulate = player_data.color
+
+func apply_powerup(powerup: Powerup):
+    active_powerups.append(powerup)
+    
+    powerup.powerup_script.apply(self)
     
 func throw_frog():
+    for powerup in active_powerups:
+        powerup.powerup_script.throw(self)
+                        
     # Without xform the force is applied relative to the frog's rotation
     var velocity = Vector2() - $DragLine.points[1]
     velocity = self.transform.basis_xform(velocity) * \
@@ -115,7 +131,6 @@ func throw_frog():
     
 func finish():
     particle.emitting = true
-    
     
 func pickup_powerup(powerup: Powerup):
     pdata.powerup = powerup
