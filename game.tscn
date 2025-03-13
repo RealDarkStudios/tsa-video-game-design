@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c8sy6aajm7w64"]
+[gd_scene load_steps=28 format=4 uid="uid://c8sy6aajm7w64"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7eqvp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_cbdkv"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://p4ot40al8xad" path="res://icon.svg" id="11_aa0fs"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="12_so7cd"]
 [ext_resource type="Resource" uid="uid://df115tgnjt566" path="res://powerups/weak.tres" id="13_xqvva"]
+[ext_resource type="Resource" uid="uid://b7vi7ftg1ogjj" path="res://powerups/strong.tres" id="16_v6rox"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_2q1w7"]
 device = -1
@@ -40,7 +41,7 @@ ease = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_polgw"]
 shader = ExtResource("10_qfmro")
-shader_parameter/grid_size = Vector2(3, 100)
+shader_parameter/grid_size = Vector2(3, 1000)
 shader_parameter/color1 = Color(1, 1, 1, 0.501961)
 shader_parameter/color2 = Color(0, 0, 0, 0.501961)
 shader_parameter/aspect_ratio_vector = Vector2(1, 1.1)
@@ -119,7 +120,7 @@ size_flags_vertical = 3
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 top_level = true
-position = Vector2(564, 308)
+position = Vector2(565, 308)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_cbdkv")
 priority = 100
@@ -129,15 +130,19 @@ tween_resource = SubResource("Resource_nnrrt")
 tween_on_load = false
 follow_damping = true
 auto_zoom = true
+auto_zoom_min = 0.2
 auto_zoom_margin = Vector4(600, 300, 600, 300)
 draw_limits = true
+limit_left = -200
 limit_bottom = 650
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 10
-position = Vector2(564, 308)
+position = Vector2(565, 308)
 scale = Vector2(1.5, 1.5)
+limit_left = -200
 limit_bottom = 650
+editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -152,13 +157,14 @@ next_button = NodePath("../Container/NextButton")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_polgw")
-position = Vector2(4300, -320)
-scale = Vector2(0.5, 14.023)
+position = Vector2(4200, -8300)
+scale = Vector2(0.5, 140)
 texture = ExtResource("11_aa0fs")
 
 [node name="Powerups" type="Node2D" parent="."]
+position = Vector2(1017, 356)
 script = ExtResource("11_3vt1j")
-powerup_types = Array[ExtResource("12_so7cd")]([ExtResource("13_xqvva")])
+powerup_types = Array[ExtResource("12_so7cd")]([ExtResource("13_xqvva"), ExtResource("16_v6rox")])
 
 [node name="PowerupBox" parent="." instance=ExtResource("5_peaqq")]
 position = Vector2(438, 556)

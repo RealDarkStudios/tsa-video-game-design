@@ -52,7 +52,7 @@ func _on_powerup_button_pressed() -> void:
             select_player_menu.visible = false
         select_player_menu.visible = true
     else:
-        powerdata.affected_player = player_manager.players[target_player]
+        powerdata.affected_player = player_manager.players[target_player - 1]
         
     powerup_manager.register_for_use(player, powerdata)
     player.pdata.powerup = null
@@ -128,6 +128,7 @@ func process_state():
             player_transition()
 
 func player_transition():
+    camera.auto_zoom_min = 1
     camera.follow_targets.clear()
     camera.follow_mode = PhantomCamera2D.FollowMode.SIMPLE
     game_state = GameState.player
@@ -147,6 +148,7 @@ func throw_transition():
     throw()
 
 func throw() -> void:
+    camera.auto_zoom_min = 0.2
     camera.follow_mode = PhantomCamera2D.FollowMode.GROUP
     camera.follow_targets.clear()
     camera.append_follow_targets_array(player_manager.players)
