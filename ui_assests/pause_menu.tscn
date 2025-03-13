@@ -23,30 +23,43 @@ offset_top = -400.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(0, 200)
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 8
 alignment = 1
 
-[node name="Continue" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ContinueMargins" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 10
+
+[node name="Continue" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ContinueMargins"]
 layout_mode = 2
 theme = ExtResource("2_8q3s1")
 theme_override_font_sizes/font_size = 40
 text = "Continue"
 
-[node name="Settings" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="QuitMargins" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_8q3s1")
-theme_override_font_sizes/font_size = 40
-text = "Settings"
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 200
 
-[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/QuitMargins"]
 layout_mode = 2
 theme = ExtResource("2_8q3s1")
 theme_override_font_sizes/font_size = 40
@@ -59,8 +72,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -257.5
+offset_top = 50.0
 offset_right = 257.5
-offset_bottom = 200.0
+offset_bottom = 250.0
 grow_horizontal = 2
 rotation = 0.0872665
 size_flags_horizontal = 4
@@ -80,6 +94,5 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ContinueMargins/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/QuitMargins/Quit" to="." method="_on_quit_pressed"]
