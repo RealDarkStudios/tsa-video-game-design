@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://3noy6u4d4ct7"]
+[gd_scene load_steps=3 format=3 uid="uid://bqvs6tbks18pv"]
 
-[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_5yats"]
-[ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="2_8q3s1"]
+[ext_resource type="Script" path="res://scripts/finish_menu.gd" id="1_2ykv1"]
+[ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="2_j5237"]
 
-[node name="PauseMenu" type="Control"]
+[node name="FinishMenu" type="Control"]
 z_index = 100
 layout_mode = 3
 anchors_preset = 15
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5yats")
+script = ExtResource("1_2ykv1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -40,18 +40,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 8
 alignment = 1
 
-[node name="ContinueMargins" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="NextLevelMargins" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 10
 
-[node name="Continue" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ContinueMargins"]
+[node name="NextLevel" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/NextLevelMargins"]
 layout_mode = 2
-theme = ExtResource("2_8q3s1")
+theme = ExtResource("2_j5237")
 theme_override_font_sizes/font_size = 40
-text = "Continue"
+text = "Next Level"
 
 [node name="QuitMargins" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -61,7 +61,7 @@ theme_override_constants/margin_right = 200
 
 [node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/QuitMargins"]
 layout_mode = 2
-theme = ExtResource("2_8q3s1")
+theme = ExtResource("2_j5237")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
@@ -76,23 +76,22 @@ offset_top = 50.0
 offset_right = 257.5
 offset_bottom = 250.0
 grow_horizontal = 2
-rotation = 0.0872665
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("2_8q3s1")
+theme = ExtResource("2_j5237")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FrogFlingContainer"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("2_8q3s1")
+theme = ExtResource("2_j5237")
 theme_override_font_sizes/normal_font_size = 100
-text = "Frog Fling
+text = "Finish
 "
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ContinueMargins/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NextLevelMargins/NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/QuitMargins/Quit" to="." method="_on_quit_pressed"]

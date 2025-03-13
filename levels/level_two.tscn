@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=4 uid="uid://cln2m88v634kd"]
+[gd_scene load_steps=18 format=4 uid="uid://ccxt6j4h6frh2"]
 
-[ext_resource type="Texture2D" uid="uid://p4ot40al8xad" path="res://icon.svg" id="1_iklch"]
-[ext_resource type="Script" path="res://scripts/level_base.gd" id="1_nm7se"]
-[ext_resource type="Texture2D" uid="uid://bxpvcijq447ha" path="res://resources/Pixelart Grasslands/DirtTiles.png" id="1_pliw0"]
-[ext_resource type="Texture2D" uid="uid://ckt2ikbwsrwee" path="res://resources/Pixelart Grasslands/GrassTiles.png" id="2_di6pq"]
-[ext_resource type="Shader" path="res://resources/shaders/checker.gdshader" id="3_y17kt"]
+[ext_resource type="Script" path="res://scripts/level_base.gd" id="1_nwxar"]
+[ext_resource type="Texture2D" uid="uid://bxpvcijq447ha" path="res://resources/Pixelart Grasslands/DirtTiles.png" id="2_g3dhu"]
+[ext_resource type="Texture2D" uid="uid://ckt2ikbwsrwee" path="res://resources/Pixelart Grasslands/GrassTiles.png" id="3_2wyyf"]
+[ext_resource type="Shader" path="res://resources/shaders/checker.gdshader" id="4_2mlrs"]
+[ext_resource type="Texture2D" uid="uid://p4ot40al8xad" path="res://icon.svg" id="5_34w5n"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j0sra"]
 normal = Vector2(1, 0)
@@ -28,7 +28,7 @@ tile_data = PackedInt32Array(0, 131073, 1, 65536, 196609, 2)
 tile_data = PackedInt32Array(0, 196609, 1, 65536, 131073, 2)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7r1w5"]
-texture = ExtResource("1_pliw0")
+texture = ExtResource("2_g3dhu")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -67,7 +67,7 @@ texture = ExtResource("1_pliw0")
 4:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jrgd6"]
-texture = ExtResource("2_di6pq")
+texture = ExtResource("3_2wyyf")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -252,7 +252,7 @@ pattern_4 = SubResource("TileMapPattern_1j84j")
 pattern_5 = SubResource("TileMapPattern_x12fc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_78po2"]
-shader = ExtResource("3_y17kt")
+shader = ExtResource("4_2mlrs")
 shader_parameter/grid_size = Vector2(3, 100)
 shader_parameter/color1 = Color(1, 1, 1, 0.501961)
 shader_parameter/color2 = Color(0, 0, 0, 0.501961)
@@ -261,8 +261,8 @@ shader_parameter/aspect_ratio_vector = Vector2(1, 1.1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdpxr"]
 size = Vector2(128, 128.503)
 
-[node name="LevelOne" type="Node2D" node_paths=PackedStringArray("finish_line")]
-script = ExtResource("1_nm7se")
+[node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("finish_line")]
+script = ExtResource("1_nwxar")
 finish_line = NodePath("FinnishLine/Area2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -284,7 +284,7 @@ texture_repeat = 2
 material = SubResource("ShaderMaterial_78po2")
 position = Vector2(1633, -282)
 scale = Vector2(0.5, 14.023)
-texture = ExtResource("1_iklch")
+texture = ExtResource("5_34w5n")
 
 [node name="Area2D" type="Area2D" parent="FinnishLine"]
 visible = false
@@ -295,3 +295,13 @@ priority = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinnishLine/Area2D"]
 position = Vector2(0, 0.285246)
 shape = SubResource("RectangleShape2D_sdpxr")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 186.0
+offset_top = 90.0
+offset_right = 226.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 25
+text = "This is the very different level 2
+
+I swear"

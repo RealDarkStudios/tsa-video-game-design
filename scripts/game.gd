@@ -18,6 +18,7 @@ enum GameState {
 @export var next_button: Button
 @export var powerup_button: TextureButton
 @export var select_player_menu: SelectPlayerMenu
+@export var finish_menu: FinishMenu
 
 @export_category("Misc")
 @export var camera: PhantomCamera2D
@@ -62,7 +63,27 @@ func _on_powerup_button_pressed() -> void:
     powerup_button.texture_normal = null
 
 func on_finish(player: PlayerClass):
-    player.visible = false
+    player.finish()
+    
+    player_manager.players.erase(player)
+    player.queue_free()
+    
+    if len(player_manager.players) == 0:
+        finish_menu.visible = true
+        return
+    
+    player_manager.check_button()
+    
+func reset():
+    game_state = GameState.first_throw
+    target_player = 0
+    
+    camera.follow_targets.clear()
+    camera.follow_mode = PhantomCamera2D.FollowMode.SIMPLE
+    
+    player_manager.setup_players()
+    
+    process_state()
 
 func process_state():
     match game_state:

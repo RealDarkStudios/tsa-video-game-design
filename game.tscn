@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8sy6aajm7w64"]
+[gd_scene load_steps=20 format=3 uid="uid://c8sy6aajm7w64"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7eqvp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_cbdkv"]
@@ -7,9 +7,10 @@
 [ext_resource type="Script" path="res://scripts/player/player_manager.gd" id="4_is3rb"]
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="4_nffec"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_pr4v3"]
+[ext_resource type="PackedScene" uid="uid://bqvs6tbks18pv" path="res://ui_assests/finish_menu.tscn" id="5_g5kc4"]
 [ext_resource type="PackedScene" path="res://powerup_box.tscn" id="5_peaqq"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="6_mox8l"]
-[ext_resource type="PackedScene" path="res://ui_assests/select_player.tscn" id="8_tem8k"]
+[ext_resource type="PackedScene" uid="uid://6kri5a4youxd" path="res://ui_assests/select_player.tscn" id="8_tem8k"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup_manager.gd" id="11_3vt1j"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="12_so7cd"]
 [ext_resource type="Resource" uid="uid://df115tgnjt566" path="res://powerups/weak.tres" id="13_xqvva"]
@@ -36,7 +37,7 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("player_manager", "powerup_manager", "level_manager", "state_label", "next_button", "powerup_button", "select_player_menu", "camera")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player_manager", "powerup_manager", "level_manager", "state_label", "next_button", "powerup_button", "select_player_menu", "finish_menu", "camera")]
 script = ExtResource("1_7eqvp")
 player_manager = NodePath("Players")
 powerup_manager = NodePath("Powerups")
@@ -45,13 +46,30 @@ state_label = NodePath("Container/StateLabel")
 next_button = NodePath("Container/NextButton")
 powerup_button = NodePath("Container/PowerupButton")
 select_player_menu = NodePath("Container/SelectPlayer")
+finish_menu = NodePath("Container/FinishMenu")
 camera = NodePath("PhantomCamera2D")
 
-[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("game_manager")]
-script = ExtResource("4_nffec")
-game_manager = NodePath("..")
-
 [node name="Container" type="CanvasLayer" parent="."]
+
+[node name="SelectPlayer" parent="Container" instance=ExtResource("8_tem8k")]
+visible = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FinishMenu" parent="Container" node_paths=PackedStringArray("game_manager", "level_manager") instance=ExtResource("5_g5kc4")]
+visible = false
+game_manager = NodePath("../..")
+level_manager = NodePath("../../LevelManager")
+
+[node name="PauseMenu" parent="Container" instance=ExtResource("3_vetdy")]
+visible = false
+custom_minimum_size = Vector2(1156, 650)
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="NextButton" type="Button" parent="Container"]
 anchors_preset = 3
@@ -60,9 +78,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -187.0
-offset_top = -127.0
-offset_right = -78.0
-offset_bottom = -81.0
+offset_top = -180.0
+offset_right = -67.0
+offset_bottom = -130.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("6_mox8l")
@@ -98,16 +116,10 @@ action_mode = 0
 shortcut = SubResource("Shortcut_3csty")
 stretch_mode = 0
 
-[node name="SelectPlayer" parent="Container" instance=ExtResource("8_tem8k")]
-visible = false
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="PauseMenu" parent="Container" instance=ExtResource("3_vetdy")]
-visible = false
-custom_minimum_size = Vector2(1156, 650)
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("game_manager")]
+script = ExtResource("4_nffec")
+game_manager = NodePath("..")
+levels = Array[String](["level_one", "level_two"])
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 top_level = true

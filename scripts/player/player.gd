@@ -4,6 +4,7 @@ extends RigidBody2D
 @export var sprite: Sprite2D
 @export var collider: CollisionPolygon2D
 @export var name_tag: Label
+@export var particle: CPUParticles2D
 
 var jump_power: float = 7
 var speed: float = 8
@@ -111,6 +112,10 @@ func throw_frog():
     await get_tree().create_timer((10 - speed) / 10).timeout
     frog_state = FrogState.thrown
     apply_impulse(velocity)
+    
+func finish():
+    particle.emitting = true
+    
     
 func pickup_powerup(powerup: Powerup):
     pdata.powerup = powerup

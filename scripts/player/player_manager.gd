@@ -3,10 +3,14 @@ extends Node
 
 @export var next_button: Button
 
-var player_scene: PackedScene = preload("res://player.tscn")
+const player_scene: PackedScene = preload("res://player.tscn")
 var players: Array[Node2D]
 
 func _ready() -> void:
+    setup_players()
+    
+func setup_players():
+    next_button.disabled = false
     for player in GlobalData.player_data:
         var player_node = player_scene.instantiate()
         player_node.set_player_data(player)
