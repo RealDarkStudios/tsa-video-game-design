@@ -140,13 +140,13 @@ follow_damping = true
 auto_zoom = true
 auto_zoom_margin = Vector4(600, 300, 600, 300)
 draw_limits = true
-limit_bottom = 650
+limit_bottom = 750
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 10
 position = Vector2(564, 308)
 scale = Vector2(1.5, 1.5)
-limit_bottom = 650
+limit_bottom = 750
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
