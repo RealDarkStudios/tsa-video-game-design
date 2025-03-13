@@ -158,6 +158,12 @@ func player_transition():
     camera.follow_mode = PhantomCamera2D.FollowMode.SIMPLE
     game_state = GameState.player
     
+    # I'm sure I will reget doing this like this at some point
+    var sorter = func(a: PlayerClass, b: PlayerClass): 
+        return a.position.x > b.position.x
+
+    player_manager.players.sort_custom(sorter)
+    
     process_state()
 
 func throw_transition():
