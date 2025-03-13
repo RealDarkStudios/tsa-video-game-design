@@ -10,6 +10,7 @@ enum GameState {
 @export_category("Managers")
 @export var player_manager: PlayerManager
 @export var powerup_manager: PowerupManager
+@export var level_manager: LevelManager
 
 @export_category("UI")
 @export var state_label: Label
