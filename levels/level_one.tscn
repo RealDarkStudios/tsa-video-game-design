@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cln2m88v634kd"]
+[gd_scene load_steps=21 format=4 uid="uid://cln2m88v634kd"]
 
 [ext_resource type="Texture2D" uid="uid://p4ot40al8xad" path="res://icon.svg" id="1_iklch"]
 [ext_resource type="Script" path="res://scripts/level_base.gd" id="1_nm7se"]
@@ -7,9 +7,8 @@
 [ext_resource type="Shader" path="res://resources/shaders/checker.gdshader" id="3_y17kt"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup_manager.gd" id="4_ghkp2"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="5_yxb36"]
-[ext_resource type="Resource" uid="uid://df115tgnjt566" path="res://powerups/weak.tres" id="6_agra4"]
 [ext_resource type="PackedScene" path="res://powerup_box.tscn" id="7_78sol"]
-[ext_resource type="Resource" uid="uid://b7vi7ftg1ogjj" path="res://powerups/strong.tres" id="7_qu5di"]
+[ext_resource type="Resource" uid="uid://duwmia0itgml5" path="res://powerups/ghost.tres" id="8_me3hx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_78po2"]
 shader = ExtResource("3_y17kt")
@@ -288,7 +287,7 @@ shape = SubResource("RectangleShape2D_sdpxr")
 
 [node name="Powerups" type="Node2D" parent="."]
 script = ExtResource("4_ghkp2")
-powerup_types = Array[ExtResource("5_yxb36")]([ExtResource("7_qu5di"), ExtResource("6_agra4")])
+powerup_types = Array[ExtResource("5_yxb36")]([ExtResource("8_me3hx")])
 
 [node name="PowerupBox" parent="Powerups" instance=ExtResource("7_78sol")]
 position = Vector2(438, 556)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://ccxt6j4h6frh2"]
+[gd_scene load_steps=23 format=4 uid="uid://ccxt6j4h6frh2"]
 
 [ext_resource type="Script" path="res://scripts/level_base.gd" id="1_nwxar"]
 [ext_resource type="Texture2D" uid="uid://bxpvcijq447ha" path="res://resources/Pixelart Grasslands/DirtTiles.png" id="2_g3dhu"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="5_qy3s1"]
 [ext_resource type="Resource" uid="uid://df115tgnjt566" path="res://powerups/weak.tres" id="6_b8n7j"]
 [ext_resource type="PackedScene" path="res://powerup_box.tscn" id="7_0ev5e"]
+[ext_resource type="Resource" uid="uid://b7vi7ftg1ogjj" path="res://powerups/strong.tres" id="7_201x3"]
+[ext_resource type="Resource" uid="uid://duwmia0itgml5" path="res://powerups/ghost.tres" id="8_sh6m3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_78po2"]
 shader = ExtResource("4_2mlrs")
@@ -287,7 +289,7 @@ shape = SubResource("RectangleShape2D_sdpxr")
 
 [node name="Powerups" type="Node2D" parent="."]
 script = ExtResource("4_6j8dl")
-powerup_types = Array[ExtResource("5_qy3s1")]([ExtResource("6_b8n7j")])
+powerup_types = Array[ExtResource("5_qy3s1")]([ExtResource("6_b8n7j"), ExtResource("7_201x3"), ExtResource("8_sh6m3")])
 
 [node name="PowerupBox" parent="Powerups" instance=ExtResource("7_0ev5e")]
 position = Vector2(438, 556)

@@ -105,7 +105,6 @@ func process_state():
             
             game_state = GameState.first_thrown
 
-        
         GameState.first_thrown:
             var player = player_manager.players[target_player]
             

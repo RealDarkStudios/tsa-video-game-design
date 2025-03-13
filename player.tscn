@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_pmftf"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="2_cur66"]
-[ext_resource type="Texture2D" uid="uid://dt2opw31k1x7p" path="res://player_characters/sprites/frog_complex.png" id="3_ad5t7"]
+[ext_resource type="Texture2D" uid="uid://cs6usue2rj3cs" path="res://player_characters/sprites/frog_simple.png" id="3_deelq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ktyc"]
 friction = 0.8
@@ -52,11 +52,11 @@ vertical_alignment = 1
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3, 3)
-texture = ExtResource("3_ad5t7")
+texture = ExtResource("3_deelq")
 
 [node name="PlayerCollider" type="CollisionPolygon2D" parent="."]
 position = Vector2(43, -22)
-polygon = PackedVector2Array(-76, 70, -49, 70, -49, 67, -46, 67, -43, 64, -22, 64, -22, 67, -19, 67, -19, 70, -4, 70, -4, 67, -1, 67, -1, 64, 2, 64, 2, 58, -1, 58, -1, 52, -4, 52, -4, 49, -1, 49, -1, 46, 2, 46, 2, 43, 5, 43, 5, 7, 2, 7, 2, 1, -1, 1, -1, -2, -4, -2, -4, -5, -10, -5, -10, -8, -64, -8, -64, -5, -70, -5, -70, -2, -76, -2, -76, 1, -79, 1, -79, 4, -82, 4, -82, 7, -85, 7, -85, 13, -88, 13, -88, 19, -91, 19, -91, 58, -88, 58, -88, 61, -85, 61, -85, 64, -79, 64, -79, 67, -76, 67)
+polygon = PackedVector2Array(-79, 70, -1, 70, 5, 64, 5, 4, -7, -8, -67, -8, -79, -2, -85, 4, -91, 16, -91, 58)
 
 [node name="DragLine" type="Line2D" parent="."]
 visible = false

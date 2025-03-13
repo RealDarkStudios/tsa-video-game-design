@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_1xxcg")
 texture = ExtResource("2_3vx0o")
-collider = PackedVector2Array(-79, 70, -43, 70, -25, 70, -1, 70, -1, 64, 5, 64, 5, 4, -1, 4, -1, -2, -7, -2, -7, -8, -67, -8, -67, -2, -79, -2, -79, 4, -85, 4, -85, 16, -91, 16, -91, 58, -85, 58, -85, 64, -79, 64)
+collider = PackedVector2Array(-79, 70, -1, 70, 5, 64, 5, 4, -7, -8, -67, -8, -79, -2, -85, 4, -91, 16, -91, 58)
 tint = Color(1, 1, 1, 1)
 jump_power = 7.0
 speed = 10.0
