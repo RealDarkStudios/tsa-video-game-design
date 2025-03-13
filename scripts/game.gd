@@ -65,6 +65,10 @@ func _on_powerup_button_pressed() -> void:
 func on_finish(player: PlayerClass):
     player.finish()
     
+    player.pdata.score += \
+        level_manager.level_instance.scores[len(GlobalData.player_data) - \
+            len(player_manager.players)]
+    
     player_manager.players.erase(player)
     player.queue_free()
     

@@ -8,6 +8,9 @@ func _ready() -> void:
     pass
 
 func _on_next_level_pressed() -> void:
+    for player in GlobalData.player_data:
+        print("%s, %s, %s" % [player.player_id, player.player_name, player.score])
+
     level_manager.next_level()
     game_manager.reset()
     self.visible = false

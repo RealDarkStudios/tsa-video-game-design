@@ -55,6 +55,7 @@ func _on_start_pressed() -> void:
         data.player_name = player.player_name.text
         data.player_type = player.player_type
         data.color = colors[player.get_index()]
+        data.player_id = player.get_index()
         GlobalData.player_data.append(data)
         player.queue_free()
 

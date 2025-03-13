@@ -264,6 +264,7 @@ size = Vector2(128, 128.503)
 [node name="LevelOne" type="Node2D" node_paths=PackedStringArray("finish_line")]
 script = ExtResource("1_nm7se")
 finish_line = NodePath("FinnishLine/Area2D")
+scores = Array[int]([1000, 800, 500, 200])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
