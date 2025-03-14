@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Powerup" load_steps=4 format=3 uid="uid://cioc117njfofk"]
+
+[ext_resource type="Script" path="res://scripts/powerup/functions/slow.gd" id="1_c2t2a"]
+[ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="2_q341h"]
+[ext_resource type="Texture2D" uid="uid://c71drpb8o4prn" path="res://addons/phantom_camera/icons/phantom_camera_3d.svg" id="3_rbnlx"]
+
+[resource]
+script = ExtResource("2_q341h")
+texture = ExtResource("3_rbnlx")
+powerup_script = ExtResource("1_c2t2a")
+affectsOther = true

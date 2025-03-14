@@ -10,5 +10,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
     if not player:
         return
         
-    player.pickup_powerup(powerup)
-    self.queue_free()
+    if player.pdata.powerup == null:
+        player.pickup_powerup(powerup)
+        self.queue_free()
