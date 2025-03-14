@@ -1,14 +1,17 @@
-[gd_scene load_steps=15 format=4 uid="uid://dd7lafioam0hk"]
+[gd_scene load_steps=18 format=4 uid="uid://bdb7kuvo1iqkp"]
 
 [ext_resource type="Script" path="res://scripts/level_base.gd" id="1_nto3l"]
 [ext_resource type="Shader" path="res://resources/shaders/checker.gdshader" id="2_cad6a"]
+[ext_resource type="Texture2D" uid="uid://bixa8svaj15ax" path="res://resources/Pixelart Grasslands/BG/bg1.png" id="2_pl5xd"]
 [ext_resource type="Texture2D" uid="uid://p4ot40al8xad" path="res://icon.svg" id="3_0b2b6"]
-[ext_resource type="TileSet" uid="uid://c3u71mf8pjkun" path="res://resources/tile_map.tres" id="4_rkijk"]
+[ext_resource type="Texture2D" uid="uid://dpsgckaj8n5ca" path="res://resources/Pixelart Grasslands/BG2/Background3.png" id="3_ay4tm"]
+[ext_resource type="Texture2D" uid="uid://cf0bigj8ccyig" path="res://resources/Pixelart Grasslands/BG/bg2.png" id="4_nq767"]
+[ext_resource type="TileSet" uid="uid://cc4egkdpyn4p7" path="res://resources/tile_map.tres" id="4_rkijk"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup_manager.gd" id="5_g87sd"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="6_7eyos"]
 [ext_resource type="Resource" uid="uid://duwmia0itgml5" path="res://powerups/ghost.tres" id="7_i15xc"]
-[ext_resource type="Resource" uid="uid://bn8wxe01cg8o2" path="res://powerups/fast.tres" id="8_0j064"]
-[ext_resource type="Resource" uid="uid://cioc117njfofk" path="res://powerups/slow.tres" id="9_7vsoi"]
+[ext_resource type="Resource" path="res://powerups/fast.tres" id="8_0j064"]
+[ext_resource type="Resource" path="res://powerups/slow.tres" id="9_7vsoi"]
 [ext_resource type="Resource" uid="uid://b7vi7ftg1ogjj" path="res://powerups/strong.tres" id="10_jeotp"]
 [ext_resource type="Resource" uid="uid://df115tgnjt566" path="res://powerups/weak.tres" id="11_yah48"]
 [ext_resource type="PackedScene" uid="uid://xnlhj3hb36ae" path="res://powerup_box.tscn" id="12_x0ov5"]
@@ -28,6 +31,48 @@ script = ExtResource("1_nto3l")
 finish_line = NodePath("FinnishLine/Area2D")
 powerup_manager = NodePath("Powerups")
 scores = Array[int]([1000, 800, 500, 200])
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1900, 0)
+
+[node name="Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, -3506)
+scale = Vector2(6, 26)
+texture = ExtResource("2_pl5xd")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1900, 0)
+
+[node name="Mountain" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(-13, -422)
+scale = Vector2(6, 6)
+texture = ExtResource("3_ay4tm")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1900, 0)
+
+[node name="Cloud" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(-65, -2015)
+scale = Vector2(6, 6)
+texture = ExtResource("4_nq767")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1900, 0)
+
+[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(3759, -90)
+rotation = -3.14159
+scale = Vector2(6, 6)
+texture = ExtResource("4_nq767")
+centered = false
 
 [node name="FinnishLine" type="Sprite2D" parent="."]
 texture_repeat = 2
