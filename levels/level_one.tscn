@@ -7,10 +7,10 @@
 [ext_resource type="Shader" path="res://resources/shaders/checker.gdshader" id="3_y17kt"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup_manager.gd" id="4_ghkp2"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="5_yxb36"]
-[ext_resource type="PackedScene" path="res://powerup_box.tscn" id="7_78sol"]
+[ext_resource type="PackedScene" uid="uid://xnlhj3hb36ae" path="res://powerup_box.tscn" id="7_78sol"]
 [ext_resource type="Resource" uid="uid://duwmia0itgml5" path="res://powerups/ghost.tres" id="8_me3hx"]
-[ext_resource type="Resource" path="res://powerups/fast.tres" id="8_q5gea"]
-[ext_resource type="Resource" path="res://powerups/slow.tres" id="9_ewfdw"]
+[ext_resource type="Resource" uid="uid://bn8wxe01cg8o2" path="res://powerups/fast.tres" id="8_q5gea"]
+[ext_resource type="Resource" uid="uid://cioc117njfofk" path="res://powerups/slow.tres" id="9_ewfdw"]
 [ext_resource type="Resource" uid="uid://b7vi7ftg1ogjj" path="res://powerups/strong.tres" id="10_lnnb6"]
 [ext_resource type="Resource" uid="uid://df115tgnjt566" path="res://powerups/weak.tres" id="11_v4gn7"]
 
@@ -300,7 +300,7 @@ script = ExtResource("4_ghkp2")
 powerup_types = Array[ExtResource("5_yxb36")]([ExtResource("8_me3hx"), ExtResource("8_q5gea"), ExtResource("9_ewfdw"), ExtResource("10_lnnb6"), ExtResource("11_v4gn7")])
 
 [node name="PowerupBox" parent="Powerups" instance=ExtResource("7_78sol")]
-position = Vector2(396, 519)
+position = Vector2(442, 556)
 
 [node name="PowerupBox2" parent="Powerups" instance=ExtResource("7_78sol")]
 position = Vector2(511, 557)
