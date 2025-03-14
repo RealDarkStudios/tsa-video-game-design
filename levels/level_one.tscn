@@ -275,7 +275,7 @@ scores = Array[int]([1000, 800, 500, 200])
 [node name="FinnishLine" type="Sprite2D" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_78po2")
-position = Vector2(1633, -282)
+position = Vector2(4495, -305)
 scale = Vector2(0.5, 14.023)
 texture = ExtResource("1_iklch")
 
