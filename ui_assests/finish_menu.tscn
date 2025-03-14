@@ -1,9 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqvs6tbks18pv"]
+[gd_scene load_steps=7 format=3 uid="uid://bqvs6tbks18pv"]
 
 [ext_resource type="Script" path="res://scripts/finish_menu.gd" id="1_2ykv1"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="2_j5237"]
+[ext_resource type="Texture2D" uid="uid://dt2opw31k1x7p" path="res://player_characters/sprites/frog_complex.png" id="3_4xr8l"]
 
-[node name="FinishMenu" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gic3n"]
+bg_color = Color(0.666667, 0.666667, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3re8m"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqsbv"]
+bg_color = Color(0.578842, 0.39153, 0.136099, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="FinishMenu" type="Control" node_paths=PackedStringArray("first_tex", "second_tex", "third_tex", "first_name", "second_name", "third_name")]
 z_index = 100
 layout_mode = 3
 anchors_preset = 15
@@ -12,6 +33,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2ykv1")
+first_tex = NodePath("FrogFlingContainer/HBoxContainer/1stPanel/VBox/FrogMargins/Frog")
+second_tex = NodePath("FrogFlingContainer/HBoxContainer/2ndPanel/VBox/FrogMargins/Frog")
+third_tex = NodePath("FrogFlingContainer/HBoxContainer/3rdPanel/VBox/FrogMargins/Frog")
+first_name = NodePath("FrogFlingContainer/HBoxContainer/1stPanel/VBox/Name")
+second_name = NodePath("FrogFlingContainer/HBoxContainer/2ndPanel/VBox/Name")
+third_name = NodePath("FrogFlingContainer/HBoxContainer/3rdPanel/VBox/Name")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -19,7 +46,6 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -400.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(0, 200)
@@ -68,29 +94,154 @@ text = "Quit"
 [node name="FrogFlingContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -257.5
-offset_top = 50.0
-offset_right = 257.5
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.15
+anchor_right = 0.85
+anchor_bottom = 0.15
 offset_bottom = 250.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("2_j5237")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="FrogFlingContainer"]
-custom_minimum_size = Vector2(200, 80)
+[node name="HBoxContainer" type="HBoxContainer" parent="FrogFlingContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="1stPanel" type="Panel" parent="FrogFlingContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gic3n")
+
+[node name="VBox" type="VBoxContainer" parent="FrogFlingContainer/HBoxContainer/1stPanel"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.5
+offset_right = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="FrogMargins" type="MarginContainer" parent="FrogFlingContainer/HBoxContainer/1stPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Frog" type="TextureRect" parent="FrogFlingContainer/HBoxContainer/1stPanel/VBox/FrogMargins"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 3
 theme = ExtResource("2_j5237")
-theme_override_font_sizes/normal_font_size = 100
-text = "Finish
-"
+texture = ExtResource("3_4xr8l")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/1stPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Player 1"
 fit_content = true
-scroll_active = false
+autowrap_mode = 0
+
+[node name="2ndPanel" type="Panel" parent="FrogFlingContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3re8m")
+
+[node name="VBox" type="VBoxContainer" parent="FrogFlingContainer/HBoxContainer/2ndPanel"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.5
+offset_right = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="FrogMargins" type="MarginContainer" parent="FrogFlingContainer/HBoxContainer/2ndPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Frog" type="TextureRect" parent="FrogFlingContainer/HBoxContainer/2ndPanel/VBox/FrogMargins"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_j5237")
+texture = ExtResource("3_4xr8l")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/2ndPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Player 2"
+fit_content = true
+autowrap_mode = 0
+
+[node name="3rdPanel" type="Panel" parent="FrogFlingContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_uqsbv")
+
+[node name="VBox" type="VBoxContainer" parent="FrogFlingContainer/HBoxContainer/3rdPanel"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.5
+offset_right = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="FrogMargins" type="MarginContainer" parent="FrogFlingContainer/HBoxContainer/3rdPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Frog" type="TextureRect" parent="FrogFlingContainer/HBoxContainer/3rdPanel/VBox/FrogMargins"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_j5237")
+texture = ExtResource("3_4xr8l")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/3rdPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Player 3"
+fit_content = true
 autowrap_mode = 0
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NextLevelMargins/NextLevel" to="." method="_on_next_level_pressed"]
