@@ -1,6 +1,8 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://c3u71mf8pjkun"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://cc4egkdpyn4p7"]
 
 [ext_resource type="Texture2D" uid="uid://das4fkb6sn00q" path="res://resources/platformer_/midground_.png" id="1_30wla"]
+[ext_resource type="Texture2D" uid="uid://bie52vhol4dy7" path="res://resources/platformer_/objects_.png" id="1_pllk1"]
+[ext_resource type="Texture2D" uid="uid://btqj8nftekrl4" path="res://resources/platformer_/background_.png" id="2_8woho"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_wb87d"]
 tile_data = PackedInt32Array(0, 131073, 1, 1, 196609, 1)
@@ -19,6 +21,59 @@ tile_data = PackedInt32Array(0, 131073, 1, 65536, 196609, 2)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_x12fc"]
 tile_data = PackedInt32Array(0, 196609, 1, 65536, 131073, 2)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0jtq6"]
+texture = ExtResource("1_pllk1")
+3:5/0 = 0
+2:5/0 = 0
+1:5/0 = 0
+2:6/0 = 0
+4:5/0 = 0
+4:2/0 = 0
+3:2/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+4:1/0 = 0
+1:3/size_in_atlas = Vector2i(2, 2)
+1:3/0 = 0
+3:3/size_in_atlas = Vector2i(2, 2)
+3:3/0 = 0
+1:1/size_in_atlas = Vector2i(2, 1)
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffa5i"]
+texture = ExtResource("2_8woho")
+1:1/0 = 0
+4:2/0 = 0
+8:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+1:4/size_in_atlas = Vector2i(2, 2)
+1:4/0 = 0
+3:4/size_in_atlas = Vector2i(2, 2)
+3:4/0 = 0
+5:4/size_in_atlas = Vector2i(2, 2)
+5:4/0 = 0
+7:4/size_in_atlas = Vector2i(2, 2)
+7:4/0 = 0
+1:2/size_in_atlas = Vector2i(2, 1)
+1:2/0 = 0
+5:2/size_in_atlas = Vector2i(2, 1)
+5:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2tt7"]
 texture = ExtResource("1_30wla")
@@ -52,11 +107,6 @@ texture = ExtResource("1_30wla")
 1:2/0/terrain = 2
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:2/0/terrains_peering_bit/right_side = 2
-1:2/1 = 1
-1:2/1/terrain_set = 0
-1:2/1/terrain = 2
-1:2/1/terrains_peering_bit/right_side = 1
-1:2/1/terrains_peering_bit/top_right_corner = 2
 2:2/next_alternative_id = 4
 2:2/0 = 0
 2:2/0/terrain_set = 0
@@ -64,33 +114,12 @@ texture = ExtResource("1_30wla")
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:2/0/terrains_peering_bit/right_side = 2
 2:2/0/terrains_peering_bit/left_side = 2
-2:2/1 = 1
-2:2/1/terrain_set = 0
-2:2/1/terrain = 2
-2:2/1/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:2/1/terrains_peering_bit/right_side = 1
-2:2/1/terrains_peering_bit/left_side = 2
-2:2/2 = 2
-2:2/2/terrain_set = 0
-2:2/2/terrain = 2
-2:2/2/terrains_peering_bit/right_side = 1
-2:2/2/terrains_peering_bit/left_side = 1
-2:2/3 = 3
-2:2/3/terrain_set = 0
-2:2/3/terrain = 2
-2:2/3/terrains_peering_bit/right_side = 2
-2:2/3/terrains_peering_bit/left_side = 1
 3:2/next_alternative_id = 2
 3:2/0 = 0
 3:2/0/terrain_set = 0
 3:2/0/terrain = 2
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:2/0/terrains_peering_bit/left_side = 2
-3:2/1 = 1
-3:2/1/terrain_set = 0
-3:2/1/terrain = 2
-3:2/1/terrains_peering_bit/left_side = 1
-3:2/1/terrains_peering_bit/top_left_corner = 2
 4:2/0 = 0
 4:2/0/terrain_set = 0
 4:2/0/terrain = 2
@@ -127,21 +156,6 @@ texture = ExtResource("1_30wla")
 2:3/0/terrains_peering_bit/right_side = 1
 2:3/0/terrains_peering_bit/left_side = 1
 2:3/0/terrains_peering_bit/top_side = 2
-2:3/1 = 1
-2:3/1/terrain_set = 0
-2:3/1/terrain = 1
-2:3/1/terrains_peering_bit/right_side = 2
-2:3/1/terrains_peering_bit/left_side = 1
-2:3/2 = 2
-2:3/2/terrain_set = 0
-2:3/2/terrain = 1
-2:3/2/terrains_peering_bit/right_side = 2
-2:3/2/terrains_peering_bit/left_side = 2
-2:3/3 = 3
-2:3/3/terrain_set = 0
-2:3/3/terrain = 1
-2:3/3/terrains_peering_bit/right_side = 1
-2:3/3/terrains_peering_bit/left_side = 2
 3:3/0 = 0
 3:3/0/terrain_set = 0
 3:3/0/terrain = 1
@@ -233,6 +247,8 @@ terrain_set_0/terrain_4/color = Color(0.28125, 0.5, 0.25, 1)
 terrain_set_0/terrain_5/name = "Swap"
 terrain_set_0/terrain_5/color = Color(0.25, 0.5, 0.3125, 1)
 sources/2 = SubResource("TileSetAtlasSource_e2tt7")
+sources/0 = SubResource("TileSetAtlasSource_0jtq6")
+sources/1 = SubResource("TileSetAtlasSource_ffa5i")
 pattern_0 = SubResource("TileMapPattern_wb87d")
 pattern_1 = SubResource("TileMapPattern_a132v")
 pattern_2 = SubResource("TileMapPattern_b5u28")
