@@ -1,14 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn2t7xk35nr4q"]
+[gd_scene load_steps=11 format=3 uid="uid://bn2t7xk35nr4q"]
 
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="1_e08x0"]
 [ext_resource type="Script" path="res://scripts/setup_menu.gd" id="1_jweqn"]
 [ext_resource type="Texture2D" uid="uid://duwvaiwr38iul" path="res://temp_assets/Background_2.png" id="2_3jtm1"]
+[ext_resource type="Texture2D" uid="uid://4s0gmqg2ehob" path="res://resources/tutorial_1.png" id="4_4al3s"]
+[ext_resource type="Script" path="res://scripts/click_to_hide.gd" id="5_p1tcu"]
+[ext_resource type="Texture2D" uid="uid://b2us2vd87bpmu" path="res://resources/tutorial_2.png" id="6_b3y8d"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gyqc8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hfv2b"]
 texture = ExtResource("2_3jtm1")
 modulate_color = Color(0.446777, 0.446777, 0.446777, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x55fm"]
+texture = ExtResource("6_b3y8d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a5r2o"]
+texture = ExtResource("4_4al3s")
 
 [node name="SetupMenu" type="Control" node_paths=PackedStringArray("player_card_holder", "player_card_add", "player_card_remove")]
 layout_mode = 3
@@ -76,22 +85,64 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 text = "+"
 
-[node name="Button" type="Button" parent="Panel"]
-z_index = 1
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -120.0
-offset_right = -50.0
-offset_bottom = -50.0
+offset_left = -352.0
+offset_top = -98.0
+offset_right = -52.0
+offset_bottom = -38.0
 grow_horizontal = 0
 grow_vertical = 0
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 20
+
+[node name="Tutorial" type="Button" parent="Panel/HBoxContainer/MarginContainer"]
+z_index = 1
+layout_mode = 2
+text = "Tutorial"
+
+[node name="StartGame" type="Button" parent="Panel/HBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Start Game"
+
+[node name="Tutorials" type="Node" parent="."]
+
+[node name="Tutorial2" type="Panel" parent="Tutorials"]
+visible = false
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_x55fm")
+script = ExtResource("5_p1tcu")
+
+[node name="Tutorial1" type="Panel" parent="Tutorials"]
+visible = false
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_a5r2o")
+script = ExtResource("5_p1tcu")
 
 [connection signal="pressed" from="Panel/VBoxContainer/PlayerCardList/PlayerCardBar/Remove Player" to="." method="_on_remove_player_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PlayerCardList/PlayerCardBar/Add Player" to="." method="_on_add_player_pressed"]
-[connection signal="pressed" from="Panel/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/MarginContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/StartGame" to="." method="_on_start_pressed"]
+[connection signal="gui_input" from="Tutorials/Tutorial2" to="Tutorials/Tutorial2" method="_on_gui_input"]
+[connection signal="gui_input" from="Tutorials/Tutorial1" to="Tutorials/Tutorial1" method="_on_gui_input"]
