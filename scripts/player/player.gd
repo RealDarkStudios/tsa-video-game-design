@@ -12,8 +12,8 @@ var pdata: PlayerData
 
 var active_powerups: Array[Powerup]
 
-const power_scaler: float = 0.5
-const power_base: float = 3
+const power_scaler: float = 0.3
+const power_base: float = 4
 
 var last_time = false
 

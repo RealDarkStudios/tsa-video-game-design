@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://cc4egkdpyn4p7"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://c3u71mf8pjkun"]
 
 [ext_resource type="Texture2D" uid="uid://das4fkb6sn00q" path="res://resources/platformer_/midground_.png" id="1_30wla"]
 [ext_resource type="Texture2D" uid="uid://bie52vhol4dy7" path="res://resources/platformer_/objects_.png" id="1_pllk1"]
@@ -17,6 +17,7 @@ tile_data = PackedInt32Array(0, 196609, 2, 1, 262145, 2)
 tile_data = PackedInt32Array(0, 196609, 1, 65536, 196609, 2)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_1j84j"]
+tile_data = PackedInt32Array(0, 131073, 1, 65536, 196609, 2)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_x12fc"]
 tile_data = PackedInt32Array(0, 196609, 1, 65536, 131073, 2)
@@ -258,6 +259,9 @@ texture = ExtResource("1_30wla")
 4:5/0/terrains_peering_bit/top_side = 1
 6:5/0 = 0
 8:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 1
