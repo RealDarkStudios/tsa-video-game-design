@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://c3u71mf8pjkun"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://cc4egkdpyn4p7"]
 
 [ext_resource type="Texture2D" uid="uid://das4fkb6sn00q" path="res://resources/platformer_/midground_.png" id="1_30wla"]
 [ext_resource type="Texture2D" uid="uid://bie52vhol4dy7" path="res://resources/platformer_/objects_.png" id="1_pllk1"]
@@ -17,7 +17,6 @@ tile_data = PackedInt32Array(0, 196609, 2, 1, 262145, 2)
 tile_data = PackedInt32Array(0, 196609, 1, 65536, 196609, 2)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_1j84j"]
-tile_data = PackedInt32Array(0, 131073, 1, 65536, 196609, 2)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_x12fc"]
 tile_data = PackedInt32Array(0, 196609, 1, 65536, 131073, 2)
@@ -260,8 +259,18 @@ texture = ExtResource("1_30wla")
 6:5/0 = 0
 8:5/0 = 0
 1:6/0 = 0
+1:6/0/terrain_set = 0
+1:6/0/terrain = 6
+1:6/0/terrains_peering_bit/right_side = 6
 2:6/0 = 0
+2:6/0/terrain_set = 0
+2:6/0/terrain = 6
+2:6/0/terrains_peering_bit/right_side = 6
+2:6/0/terrains_peering_bit/left_side = 6
 3:6/0 = 0
+3:6/0/terrain_set = 0
+3:6/0/terrain = 6
+3:6/0/terrains_peering_bit/left_side = 6
 
 [resource]
 physics_layer_0/collision_layer = 1
@@ -279,6 +288,8 @@ terrain_set_0/terrain_4/name = "Drop"
 terrain_set_0/terrain_4/color = Color(0.28125, 0.5, 0.25, 1)
 terrain_set_0/terrain_5/name = "Swap"
 terrain_set_0/terrain_5/color = Color(0.25, 0.5, 0.3125, 1)
+terrain_set_0/terrain_6/name = "Bottom"
+terrain_set_0/terrain_6/color = Color(0.25, 0.5, 0.40625, 1)
 sources/2 = SubResource("TileSetAtlasSource_e2tt7")
 sources/0 = SubResource("TileSetAtlasSource_0jtq6")
 sources/1 = SubResource("TileSetAtlasSource_ffa5i")
