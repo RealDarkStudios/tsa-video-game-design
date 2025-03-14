@@ -10,6 +10,9 @@ class_name FinishMenu
 @export var first_name: RichTextLabel
 @export var second_name: RichTextLabel
 @export var third_name: RichTextLabel
+@export var first_score: RichTextLabel
+@export var second_score: RichTextLabel
+@export var third_score: RichTextLabel
 
 func _ready() -> void:
     pass
@@ -18,21 +21,26 @@ func show_rankings() -> void:
     var num = 2
     var texs: Array[TextureRect] = [first_tex, second_tex]
     var names: Array[RichTextLabel] = [first_name, second_name]
+    var scores: Array[RichTextLabel] = [first_score, second_score]
     
     if len(GlobalData.player_data) < 3:
-        third_name.get_parent().get_parent().queue_free()
+        if is_instance_valid(third_name):
+            third_name.get_parent().get_parent().queue_free()
     else:
         num = 3
         texs.append(third_tex)
         names.append(third_name)
+        scores.append(third_score)
         
     for i in range(num):
         var player: PlayerData = level_manager.level_instance.rankings[i]
         var tex: TextureRect = texs[i]
         var name_label: RichTextLabel = names[i]
+        var score: RichTextLabel = scores[i]
         
         tex.texture = player.player_type.texture
         name_label.text = player.player_name
+        score.text = "Total Score: %d" % (player.score)
         
     visible = true
 

@@ -24,7 +24,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="FinishMenu" type="Control" node_paths=PackedStringArray("first_tex", "second_tex", "third_tex", "first_name", "second_name", "third_name")]
+[node name="FinishMenu" type="Control" node_paths=PackedStringArray("first_tex", "second_tex", "third_tex", "first_name", "second_name", "third_name", "first_score", "second_score", "third_score")]
 z_index = 100
 layout_mode = 3
 anchors_preset = 15
@@ -39,6 +39,9 @@ third_tex = NodePath("FrogFlingContainer/HBoxContainer/3rdPanel/VBox/FrogMargins
 first_name = NodePath("FrogFlingContainer/HBoxContainer/1stPanel/VBox/Name")
 second_name = NodePath("FrogFlingContainer/HBoxContainer/2ndPanel/VBox/Name")
 third_name = NodePath("FrogFlingContainer/HBoxContainer/3rdPanel/VBox/Name")
+first_score = NodePath("FrogFlingContainer/HBoxContainer/1stPanel/VBox/Score")
+second_score = NodePath("FrogFlingContainer/HBoxContainer/2ndPanel/VBox/Score")
+third_score = NodePath("FrogFlingContainer/HBoxContainer/3rdPanel/VBox/Score")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -128,6 +131,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 alignment = 1
 
+[node name="Name" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/1stPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Player 1"
+fit_content = true
+autowrap_mode = 0
+
 [node name="FrogMargins" type="MarginContainer" parent="FrogFlingContainer/HBoxContainer/1stPanel/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -146,11 +157,11 @@ texture = ExtResource("3_4xr8l")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Name" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/1stPanel/VBox"]
+[node name="Score" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/1stPanel/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
-text = "Player 1"
+size_flags_vertical = 0
+text = "0"
 fit_content = true
 autowrap_mode = 0
 
@@ -173,6 +184,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 alignment = 1
 
+[node name="Name" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/2ndPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Player 2"
+fit_content = true
+autowrap_mode = 0
+
 [node name="FrogMargins" type="MarginContainer" parent="FrogFlingContainer/HBoxContainer/2ndPanel/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -191,11 +210,11 @@ texture = ExtResource("3_4xr8l")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Name" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/2ndPanel/VBox"]
+[node name="Score" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/2ndPanel/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-text = "Player 2"
+text = "0"
 fit_content = true
 autowrap_mode = 0
 
@@ -218,6 +237,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 alignment = 1
 
+[node name="Name" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/3rdPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Player 3"
+fit_content = true
+autowrap_mode = 0
+
 [node name="FrogMargins" type="MarginContainer" parent="FrogFlingContainer/HBoxContainer/3rdPanel/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -236,11 +263,11 @@ texture = ExtResource("3_4xr8l")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Name" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/3rdPanel/VBox"]
+[node name="Score" type="RichTextLabel" parent="FrogFlingContainer/HBoxContainer/3rdPanel/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-text = "Player 3"
+text = "0"
 fit_content = true
 autowrap_mode = 0
 
