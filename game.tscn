@@ -41,7 +41,7 @@ player_manager = NodePath("Players")
 level_manager = NodePath("LevelManager")
 state_label = NodePath("Container/StateLabel")
 next_button = NodePath("Container/NextButton")
-powerup_button = NodePath("Container/Powerup/PowerupButton")
+powerup_button = NodePath("Container/Powerup/MarginContainer/PowerupButton")
 finish_menu = NodePath("Container/FinishMenu")
 camera = NodePath("PhantomCamera2D")
 
@@ -107,14 +107,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_wqj88")
 
-[node name="PowerupButton" type="TextureButton" parent="Container/Powerup"]
-texture_filter = 3
+[node name="MarginContainer" type="MarginContainer" parent="Container/Powerup"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PowerupButton" type="TextureButton" parent="Container/Powerup/MarginContainer"]
+texture_filter = 3
+layout_mode = 2
 disabled = true
 action_mode = 0
 shortcut = SubResource("Shortcut_3csty")
@@ -160,4 +167,4 @@ next_button = NodePath("../Container/NextButton")
 game_manager = NodePath("..")
 
 [connection signal="pressed" from="Container/NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="pressed" from="Container/Powerup/PowerupButton" to="." method="_on_powerup_button_pressed"]
+[connection signal="pressed" from="Container/Powerup/MarginContainer/PowerupButton" to="." method="_on_powerup_button_pressed"]
