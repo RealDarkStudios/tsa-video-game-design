@@ -91,7 +91,7 @@ func process_state():
 				player_transition()
 				return
 		
-			next_button.text = "Confirm"
+			next_button.text = "Throw"
 			
 			player_manager.set_state_all(PlayerClass.FrogState.waiting_for_turn)
 			var player = player_manager.players[target_player]
@@ -113,6 +113,8 @@ func process_state():
 			
 			player_manager.set_state_all(PlayerClass.FrogState.idle)
 			player.throw_frog()
+			
+			next_button.text = "Continue"
 			
 			player.speed = tmp_speed
 			

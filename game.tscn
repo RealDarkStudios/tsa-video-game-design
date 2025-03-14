@@ -154,7 +154,7 @@ process_physics_priority = 300
 script = ExtResource("4_pr4v3")
 
 [node name="Players" type="Node2D" parent="." node_paths=PackedStringArray("next_button", "game_manager")]
-position = Vector2(305, 364)
+position = Vector2(282, 528)
 script = ExtResource("4_is3rb")
 next_button = NodePath("../Container/NextButton")
 game_manager = NodePath("..")
