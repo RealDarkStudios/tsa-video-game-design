@@ -1,21 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://xnlhj3hb36ae"]
+[gd_scene load_steps=4 format=3 uid="uid://xnlhj3hb36ae"]
 
 [ext_resource type="Script" path="res://scripts/powerup/powerup_box.gd" id="1_pwyc5"]
 [ext_resource type="Texture2D" uid="uid://dyycbbkplprg4" path="res://powerups/sprites/box.png" id="1_y67gu"]
+[ext_resource type="Texture2D" uid="uid://coq8ld7xlaxii" path="res://powerups/sprites/box_new.png" id="3_gmslp"]
 
-[node name="PowerupBox" type="Node2D"]
+[node name="PowerupBox" type="Node2D" node_paths=PackedStringArray("icon")]
 scale = Vector2(2, 2)
 script = ExtResource("1_pwyc5")
+icon = NodePath("NewIcon")
+rotation_speed = 1.0
+rotation_max_angle = 2.5
 
-[node name="BoxIcon" type="Sprite2D" parent="."]
+[node name="OldIcon" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 3
 texture = ExtResource("1_y67gu")
+
+[node name="NewIcon" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("3_gmslp")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
 polygon = PackedVector2Array(16, -9, 16, 9, 0, 17, -16, 9, -16, -9, 0, -17)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
