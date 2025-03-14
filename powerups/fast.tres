@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Powerup" load_steps=4 format=3 uid="uid://bn8wxe01cg8o2"]
+[gd_resource type="Resource" script_class="Powerup" load_steps=4 format=3 uid="uid://dw1wyi5ntrao3"]
 
 [ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="1_4i10k"]
 [ext_resource type="Script" path="res://scripts/powerup/functions/fast.gd" id="1_qkti6"]
@@ -8,4 +8,5 @@
 script = ExtResource("1_4i10k")
 texture = ExtResource("3_2jhmj")
 powerup_script = ExtResource("1_qkti6")
+tooltip_text = "Makes you jump faster"
 affectsOther = true

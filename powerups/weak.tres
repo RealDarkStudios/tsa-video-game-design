@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/powerup/functions/weak.gd" id="1_ngmco"]
 [ext_resource type="Script" path="res://scripts/powerup/powerup.gd" id="2_xvgt1"]
-[ext_resource type="Texture2D" uid="uid://xj75erx3qhfu" path="res://powerups/sprites/weak.png" id="3_t25gd"]
+[ext_resource type="Texture2D" uid="uid://88agriyneqoa" path="res://powerups/sprites/weak.png" id="3_t25gd"]
 
 [resource]
 script = ExtResource("2_xvgt1")
 texture = ExtResource("3_t25gd")
 powerup_script = ExtResource("1_ngmco")
+tooltip_text = "Makes opponents jump weaker"
 affectsOther = true

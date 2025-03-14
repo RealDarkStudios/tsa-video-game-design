@@ -8,4 +8,5 @@
 script = ExtResource("2_wiluc")
 texture = ExtResource("3_o1x4m")
 powerup_script = ExtResource("1_cp0ic")
+tooltip_text = "Makes you pass through players"
 affectsOther = false

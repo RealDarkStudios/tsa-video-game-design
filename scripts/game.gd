@@ -54,6 +54,7 @@ func _on_powerup_button_pressed() -> void:
 
     player.pdata.powerup = null
     powerup_button.disabled = true
+    powerup_button.tooltip_text = ""
     powerup_button.texture_normal = null
     powerup_button.get_parent().get_parent().visible = false
 
@@ -146,10 +147,12 @@ func process_state():
             if player.pdata.powerup:
                 powerup_button.disabled = false
                 powerup_button.get_parent().get_parent().visible = true
+                powerup_button.tooltip_text = player.pdata.powerup.tooltip_text
                 powerup_button.texture_normal = player.pdata.powerup.texture
             else:
                 powerup_button.disabled = true
                 powerup_button.get_parent().get_parent().visible = false
+                powerup_button.tooltip_text = ""
                 powerup_button.texture_normal = null
 
             target_player += 1
@@ -173,6 +176,7 @@ func player_transition():
 func throw_transition():
     powerup_button.disabled = true
     powerup_button.get_parent().get_parent().visible = false
+    powerup_button.tooltip_text = ""
     powerup_button.texture_normal = null
 
     game_state = GameState.thrown

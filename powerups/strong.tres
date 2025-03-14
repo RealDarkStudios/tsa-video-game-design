@@ -8,4 +8,5 @@
 script = ExtResource("1_8fltl")
 texture = ExtResource("3_rlldi")
 powerup_script = ExtResource("1_aelio")
+tooltip_text = "Makes you jump further"
 affectsOther = false
