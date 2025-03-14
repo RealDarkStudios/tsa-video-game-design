@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://xnlhj3hb36ae"]
 
 [ext_resource type="Script" path="res://scripts/powerup/powerup_box.gd" id="1_pwyc5"]
-[ext_resource type="Texture2D" uid="uid://dyycbbkplprg4" path="res://powerups/box.png" id="1_y67gu"]
+[ext_resource type="Texture2D" uid="uid://dyycbbkplprg4" path="res://powerups/sprites/box.png" id="1_y67gu"]
 
 [node name="PowerupBox" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_pwyc5")
 
 [node name="BoxIcon" type="Sprite2D" parent="."]
