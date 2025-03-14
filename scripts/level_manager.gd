@@ -36,7 +36,7 @@ func load_level_name(level_name: String):
 func next_level():
     if current_level_number + 1 >= len(levels):
         # This should be a finish screen
-        get_tree().change_scene_to_file("res://main_menu.tscn")
+        get_tree().change_scene_to_file("res://ui_assests/final_podium.tscn")
         return
 
     load_level(current_level_number + 1)
