@@ -12,9 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://xnlhj3hb36ae" path="res://powerup_box.tscn" id="7_0ev5e"]
 [ext_resource type="Resource" uid="uid://b7vi7ftg1ogjj" path="res://powerups/strong.tres" id="7_201x3"]
 [ext_resource type="Resource" uid="uid://duwmia0itgml5" path="res://powerups/ghost.tres" id="8_sh6m3"]
-[ext_resource type="Resource" path="res://powerups/fast.tres" id="9_k0sud"]
-[ext_resource type="Resource" path="res://powerups/slow.tres" id="10_kfeld"]
-[ext_resource type="TileSet" uid="uid://cc4egkdpyn4p7" path="res://resources/tile_map.tres" id="12_kgeq1"]
+[ext_resource type="Resource" uid="uid://bn8wxe01cg8o2" path="res://powerups/fast.tres" id="9_k0sud"]
+[ext_resource type="Resource" uid="uid://cioc117njfofk" path="res://powerups/slow.tres" id="10_kfeld"]
+[ext_resource type="TileSet" uid="uid://c3u71mf8pjkun" path="res://resources/tile_map.tres" id="12_kgeq1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_78po2"]
 shader = ExtResource("4_2mlrs")
