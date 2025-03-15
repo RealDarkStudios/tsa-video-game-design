@@ -10,7 +10,7 @@ const colors = [Color8(229,99, 0, 255), Color8(14, 205, 230, 255), Color8(169, 1
 
 func _ready() -> void:
     add_player_card()
-    add_player_card()
+    #add_player_card()
 
     player_card_remove.disabled = true
     player_card_add.disabled = false

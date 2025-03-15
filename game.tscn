@@ -131,7 +131,7 @@ stretch_mode = 0
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("game_manager")]
 script = ExtResource("4_nffec")
 game_manager = NodePath("..")
-levels = Array[String](["level_one", "level_two", "level_three"])
+levels = Array[String](["level_three", "level_one", "level_two"])
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 top_level = true
