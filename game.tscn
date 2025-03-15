@@ -12,8 +12,7 @@
 
 [sub_resource type="InputEventKey" id="InputEventKey_2q1w7"]
 device = -1
-keycode = 32
-unicode = 32
+keycode = 4194309
 
 [sub_resource type="Shortcut" id="Shortcut_cg4hy"]
 events = [SubResource("InputEventKey_2q1w7")]
