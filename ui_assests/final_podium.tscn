@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpj5knegg2txg"]
+[gd_scene load_steps=13 format=3 uid="uid://kveugle5mymj"]
 
 [ext_resource type="Script" path="res://scripts/final_podium.gd" id="1_hvxvv"]
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="2_nmmyw"]
 [ext_resource type="Texture2D" uid="uid://duwvaiwr38iul" path="res://temp_assets/Background_2.png" id="3_7hapi"]
 [ext_resource type="Texture2D" uid="uid://dt2opw31k1x7p" path="res://player_characters/sprites/frog_complex.png" id="4_271h4"]
+[ext_resource type="Texture2D" uid="uid://bbd6dxb5hv6fc" path="res://resources/story_3.png" id="5_x7c5t"]
+[ext_resource type="Script" path="res://scripts/click_to_hide.gd" id="6_f1w6p"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gyqc8"]
 
@@ -30,6 +32,9 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0qya2"]
+texture = ExtResource("5_x7c5t")
 
 [node name="FinalPodium" type="Control" node_paths=PackedStringArray("first_tex", "second_tex", "third_tex", "first_name", "second_name", "third_name", "first_score", "second_score", "third_score")]
 layout_mode = 3
@@ -312,4 +317,16 @@ text = "0"
 fit_content = true
 autowrap_mode = 0
 
+[node name="Story" type="Panel" parent="."]
+z_index = 500
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0qya2")
+script = ExtResource("6_f1w6p")
+
 [connection signal="pressed" from="Panel/HBoxContainer/ReturnToMainMenuButton" to="." method="_on_return_to_main_menu_button_pressed"]
+[connection signal="gui_input" from="Story" to="Story" method="_on_gui_input"]

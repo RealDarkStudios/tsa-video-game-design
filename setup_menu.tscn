@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn2t7xk35nr4q"]
+[gd_scene load_steps=15 format=3 uid="uid://bn2t7xk35nr4q"]
 
 [ext_resource type="Theme" uid="uid://d3us6r3u2b0ao" path="res://resources/base_theme.tres" id="1_e08x0"]
 [ext_resource type="Script" path="res://scripts/setup_menu.gd" id="1_jweqn"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://4s0gmqg2ehob" path="res://resources/tutorial_1.png" id="4_4al3s"]
 [ext_resource type="Script" path="res://scripts/click_to_hide.gd" id="5_p1tcu"]
 [ext_resource type="Texture2D" uid="uid://b2us2vd87bpmu" path="res://resources/tutorial_2.png" id="6_b3y8d"]
+[ext_resource type="Texture2D" uid="uid://cn6qbwpgsv1qn" path="res://resources/story_2.png" id="7_leylp"]
+[ext_resource type="Texture2D" uid="uid://dq4kmrk0w3k5i" path="res://resources/story_1.png" id="7_qcknp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gyqc8"]
 
@@ -18,6 +20,12 @@ texture = ExtResource("6_b3y8d")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a5r2o"]
 texture = ExtResource("4_4al3s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c4veq"]
+texture = ExtResource("7_leylp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cs26s"]
+texture = ExtResource("7_qcknp")
 
 [node name="SetupMenu" type="Control" node_paths=PackedStringArray("player_card_holder", "player_card_add", "player_card_remove")]
 layout_mode = 3
@@ -140,9 +148,33 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_a5r2o")
 script = ExtResource("5_p1tcu")
 
+[node name="Story" type="Node" parent="."]
+
+[node name="Story2" type="Panel" parent="Story"]
+z_index = 500
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_c4veq")
+script = ExtResource("5_p1tcu")
+
+[node name="Story1" type="Panel" parent="Story"]
+z_index = 500
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cs26s")
+script = ExtResource("5_p1tcu")
+
 [connection signal="pressed" from="Panel/VBoxContainer/PlayerCardList/PlayerCardBar/Remove Player" to="." method="_on_remove_player_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PlayerCardList/PlayerCardBar/Add Player" to="." method="_on_add_player_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/MarginContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/StartGame" to="." method="_on_start_pressed"]
 [connection signal="gui_input" from="Tutorials/Tutorial2" to="Tutorials/Tutorial2" method="_on_gui_input"]
 [connection signal="gui_input" from="Tutorials/Tutorial1" to="Tutorials/Tutorial1" method="_on_gui_input"]
+[connection signal="gui_input" from="Story/Story2" to="Story/Story2" method="_on_gui_input"]
+[connection signal="gui_input" from="Story/Story1" to="Story/Story1" method="_on_gui_input"]
