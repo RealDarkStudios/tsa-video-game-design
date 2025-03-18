@@ -6,7 +6,8 @@ extends Control
 
 const player_card = preload("res://ui_assests/player_card.tscn")
 
-const colors = [Color8(229,99, 0, 255), Color8(14, 205, 230, 255), Color8(169, 14, 230, 255), Color8(166, 230, 14, 255)]
+const colors = [Color8(229,99, 0, 255), Color8(14, 205, 230, 255), Color8(169, 14, 230, 255), Color8(166, 230, 14, 255),
+Color8(229,99, 0, 255), Color8(14, 205, 230, 255), Color8(169, 14, 230, 255), Color8(166, 230, 14, 255)]
 
 func _ready() -> void:
     add_player_card()
@@ -14,6 +15,15 @@ func _ready() -> void:
 
     player_card_remove.disabled = true
     player_card_add.disabled = false
+
+func _process(delta: float) -> void:
+    if Input.is_action_just_pressed("level_up"):
+        print("Current Level +1")
+        GlobalData.current_level += 1
+    
+    if Input.is_action_just_pressed("level_down"):
+        print("Current Level -1")
+        GlobalData.current_level -= 1
 
 func add_player_card() -> void:
     var new_card = player_card.instantiate();
@@ -27,7 +37,7 @@ func add_player_card() -> void:
 
     player_card_remove.disabled = false
 
-    if player_card_holder.get_child_count() >= 4:
+    if player_card_holder.get_child_count() >= 8:
         player_card_add.disabled = true
 
 
