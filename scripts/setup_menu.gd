@@ -6,8 +6,8 @@ extends Control
 
 const player_card = preload("res://ui_assests/player_card.tscn")
 
-const colors = [Color8(229,99, 0, 255), Color8(14, 205, 230, 255), Color8(169, 14, 230, 255), Color8(166, 230, 14, 255),
-Color8(229,99, 0, 255), Color8(14, 205, 230, 255), Color8(169, 14, 230, 255), Color8(166, 230, 14, 255)]
+const colors = [Color8(229, 99, 0, 255), Color8(14, 205, 230, 255), Color8(169, 14, 230, 255), Color8(166, 230, 14, 255),
+Color8(225, 1, 1, 255), Color8(0, 20, 224, 255), Color8(224, 176, 0, 255), Color8(0, 224, 64, 255)]
 
 func _ready() -> void:
     add_player_card()
